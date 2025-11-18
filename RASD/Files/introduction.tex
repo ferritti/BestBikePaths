@@ -1,0 +1,117 @@
+\subsection{Purpose}
+The growing popularity of cycling as both a means of transportation and a recreational activity has increased the need for reliable, up-to-date information about bike paths. Cyclists often struggle to identify safe and efficient routes, especially when facing incomplete or outdated data regarding path conditions, obstacles, or environmental factors. At the same time, users who wish to contribute to the cycling community by sharing information about the paths they travel may find it difficult to organize, store, and communicate such data in a structured and meaningful way.
+The purpose of BBP is to provide an environment where cyclists can record their trips, contribute information about bike paths, and access curated, community-driven data to make informed decisions about their routes. Through a combination of manual input and automated data collection from mobile devices, users can keep track of their cycling activities while simultaneously improving the shared knowledge base about path conditions.
+BBP aims to give all users—whether registered or not—a clear understanding of the quality and safety of available bike paths, offering route visualizations, condition assessments, and recommendations based on consolidated and verified information. Transparency, reliability, and community collaboration are promoted at every step, ensuring that cyclists can navigate efficiently while benefiting from accurate and continuously updated path information.
+\\
+
+\noindent
+BBP, therefore, intends to serve the following primary goals:
+
+\begin{description}
+    \item[\textbf{[G1]}] Registered users should have access to performance metrics about their trips.
+    
+    \item[\textbf{[G2]}] When available, users would like to be informed about meteorological information related to the paths of interest.
+    
+    \item[\textbf{[G3]}] Registered users should have the possibility to insert informations about the path of interest.
+    
+    \item[\textbf{[G4]}] Information about bike paths provided by registered users should be acquirable both manually and automatically.
+    
+    \item[\textbf{[G5]}] Automatically detected issues should be validated by the registered user before becoming available to others.
+    
+    \item[\textbf{[G6]}] Registered users should be able to make their provided information publishable to the community.
+    
+    \item[\textbf{[G7]}] Users should be able to visualize viable bike paths between two points.
+    
+    \item[\textbf{[G8]}] Users should be able to compare alternative bike paths based on their overall score.
+\end{description}
+
+
+\subsection{Scope}
+The Best Bike Paths (BBP) system aims to support the biking community by mediating the interactions between individual cyclists and the shared repository of information regarding bike paths. The external users who interact with the platform include registered cyclists, unregistered visitors, and potentially local cycling associations or municipalities interested in monitoring the conditions of bike routes. Since only registered users can contribute new information or validate automatically collected data, the system must identify these users through personal accounts, while unregistered visitors access the platform in a read-only mode. Registered cyclists provide BBP with details about their trips either manually or through an automated acquisition mode that collects GPS data and movement information. In addition to recording the path itself, the application also provides users with performance metrics derived from their trips, such as total distance, duration, average speed, and other relevant indicators to support personal activity monitoring and analysis. These data sources become key assets for enhancing trip analysis, improving the accuracy of anomaly detection, and increasing the overall reliability of the platform’s scoring mechanisms.
+When available, the system also enriches trip data with meteorological information, such as weather conditions, temperature, and wind speed, retrieved from external services.
+The system supports users in reviewing, correcting, and publishing the collected information, and it aggregates contributions from multiple cyclists to ensure that the status of each path reflects fresh and trustworthy evidence. All external users can request the visualization of one or more paths between an origin and a destination, and BBP assists them by computing ranked paths based on their status and effectiveness. Through these features, the application facilitates the discovery of safe and efficient bike paths and provides a continuously updated overview of the cycling network.
+
+
+
+\subsubsection{World Phenomena}
+\begin{description}
+    \item[\textbf{[WP1]}] A user moves along a path.
+    
+    \item[\textbf{[WP2]}] The user’s physical speed varies over time.
+    
+    \item[\textbf{[WP3]}] The user’s device experiences vibrations or impacts due to road conditions.
+    
+    \item[\textbf{[WP4]}] The user physically reaches the starting location of the trip.
+    
+    \item[\textbf{[WP5]}] The user arrives at the ending location of the trip.
+    
+    \item[\textbf{[WP6]}] The user trip is conditioned by the weather conditions.
+\end{description}
+
+\subsubsection{Shared Phenomena}
+\paragraph{World Controlled}
+\begin{description}
+    \item[\textbf{[SP1]}]  The user inserts information about the path in manual mode
+
+    \item[\textbf{[SP2]}] The user accepts path information suggested by automated mode
+
+    \item[\textbf{[SP3]}] The user publishes information provided to the community 
+
+    \item[\textbf{[SP4]}] The system receives accelerometer readings generated by vibrations
+
+    \item[\textbf{[SP5]}] The system receives gyroscope readings generated by device rotation 
+
+    \item[\textbf{[SP6]}] The system receives GPS location data from the cyclist’s device
+
+    \item[\textbf{[SP7]}]  Different users may observe the same path and report different aspects of it
+\end{description}
+
+
+\paragraph{Machine Controlled}
+\begin{description}
+    \item[\textbf{[SP8]}] The system suggests path information to be inserted in automated mode 
+
+    \item[\textbf{[SP9]}] The system provides the top 5 paths based on the score
+
+    \item[\textbf{[SP10]}] The system provides information about the path of interest
+
+    \item[\textbf{[SP11]}] The system provides performance metrics about the user’s trip
+\end{description}
+\subsection{Definitions, Acronyms, Abbreviations}
+\subsubsection{Definitions}
+
+\begin{itemize}
+    \item \textbf{Bike Path}: A road segment or sequence of segments that is suitable for bicycles. A path is considered bike-safe if it includes a dedicated bike lane or if car traffic is rare and speed limits are compatible with typical bike speeds.
+    \item \textbf{Trip}: A cycling activity recorded by a registered user. A trip includes GPS tracking data, performance metrics (distance, average speed, etc.), and, when available, meteorological information retrieved from an external weather service.
+    \item \textbf{Performance Metrics}: Statistics associated with a trip, such as total distance, duration, average speed, maximum speed, elevation gain, and other cycling-related measures.
+    \item \textbf{Meteorological Information}: External data enriched by BBP when available, including temperature, weather conditions (sunny, cloudy, rainy…), wind speed, humidity, and similar environmental indicators.
+    \item \textbf{Manual Mode}: A mode in which a user manually enters information about a bike path, specifying street names, path segments, their status, and any obstacles.
+    \item \textbf{Automated Mode}: A mode in which BBP automatically collects data from the user’s mobile device while biking. Data includes GPS traces to infer the following path, accelerometer and gyroscope readings to detect potential potholes or obstacles, and speed information to infer that the user is cycling.
+    \item \textbf{Obstacle}: Any relevant physical irregularity affecting the bike path (e.g., potholes, bumps, debris). In automated mode, obstacles are inferred from device sensors and later confirmed by the user.
+    \item \textbf{Status}: A qualitative assessment of a bike path segment. Possible values include: optimal, medium, sufficient, requires maintenance, etc. Status can be user-generated (manual or automatic) and may be aggregated from multiple users.
+    \item \textbf{Information Publishable}: Verified and user-approved data about a bike path (status, obstacles) that can be made publicly accessible to the community.
+    \item \textbf{Score}: A computed score used to rank alternative bike paths between an origin and a destination. The score considers both the quality (status) of the path and its effectiveness in connecting the two points.
+
+
+    
+
+\end{itemize}
+
+\subsubsection{Acronyms}
+
+\subsubsection{Abbreviations}
+
+\subsection{Revision history}
+
+\subsection{Reference Documents}
+
+\subsection{Document Structure}
+\begin{enumerate}
+    \item \textbf{Introduction:} It aims to provide a brief overview of the project, focusing in particular on the motivations behind it and the goals intended to be achieved through its development.
+    \item \textbf{Overall Description:} It is a high-level description of how the system operates, including a detailed explanation of the phenomena involving the world, the machine, or both. This section also provides the domain description along with the related assumptions.
+    \item \textbf{Specific Requirements:} This section presents a detailed analysis of the requirements needed to achieve the identified goals. In addition, it provides further information relevant to developers, such as hardware and software constraints.
+    \item \textbf{Formal analysis:} It provides a formal specification of the world phenomena using Alloy.
+    \item \textbf{Effort spent:} It reports the time spent to produce this document, organized by section.
+    \item \textbf{References:}It includes references to all documents and software used in the preparation of this paper.
+\end{enumerate}
+ 
