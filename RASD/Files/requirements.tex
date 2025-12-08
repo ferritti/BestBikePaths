@@ -1,0 +1,76 @@
+\subsection{External Interface Requirements}
+
+\subsection{Functional Requirements}
+
+\textbf{Sign up \& Login}
+\begin{description}
+    \item[\textbf{[R1]}] The platform shall allow new users to register an account by providing personal information.
+    \item[\textbf{[R2]}] The platform shall allow registered users to log in by entering their registered email and password.
+\end{description}
+
+\noindent
+\textbf{Map Explorer}
+\begin{description}
+    \item[\textbf{[R3]}] The platform shall display an interactive map centered on the user's current location.
+    \item[\textbf{[R4]}] The platform shall allow users to input an "Origin" and "Destination" of the desired path.
+    \item[\textbf{[R5]}] The platform shall allow users to swap the origin and destination inputs.
+    \item[\textbf{[R6]}] The platform shall calculate and display the top 5 paths options ranked by score.
+    \item[\textbf{[R7]}] The platform shall visualize the geometry, quality, scores and obstacles of the top 5 paths on the map.
+    \item[\textbf{[R8]}] The platform shall allow users to start the navigation mode for the currently selected path.
+    \item[\textbf{[R9]}] When the navigation is started, the platform shall visualize the user's position in real-time.
+    \item[\textbf{[R10]}] When the navigation is started, The platform shall display a dynamic navigation overlay providing the name of the street being traversed and the estimated speed.
+
+    \item[\textbf{[R11]}] the platform shall allow users to interrupt the active navigation mode at any time.
+
+    \item[\textbf{[R12]}]  When the navigation is completed, the platform shall present to registered users a summary screen containing statistics and the map of the path taken.
+
+    \item[\textbf{[R13]}] When the navigation is completed, The platform shall allow registered users to modify the path status and the obstacles.
+\end{description}
+
+\noindent
+\textbf{Active Path Recording}
+\begin{description}
+    \item[\textbf{[R14]}] The platform shall allow registered users to start an active recording session.
+    \item[\textbf{[R15]}] The platform shall allow registered users to pause and resume the recording of the active trip.
+    \item[\textbf{[R16]}] The platform shall utilize device sensors to automatically detect obstacles.
+    \item[\textbf{[R17]}] The platform shall display real-time metrics during the trip, including duration, current speed, distance traveled, and weather conditions.
+
+    \item[\textbf{[R18]}] The platform shall allow registered users to stop the recording and immediately transition to the summary screen to review the captured data.
+
+    \item[\textbf{[R19]}] The platform shall allow registered users to modify status and obstacles in the captured data summary.
+
+    \item[\textbf{[R20]}] The platform shall allow registered users to publish the captured path along with its data.
+\end{description}
+
+\newpage
+\noindent
+\textbf{Manual Path Creation}
+\begin{description}
+    \item[\textbf{[R21]}] The platform shall allow registered users to manually draw the path on the map.
+    \item[\textbf{[R22]}] The platform shall allow registered users to manually place obstacle markers along the drawn path.
+    \item[\textbf{[R23]}] The platform shall allow registered users to set the status of the drawn path.
+    \item[\textbf{[R24]}] The platform shall allow registered users to publish the drawn path along with its data.
+\end{description}
+
+\noindent
+\textbf{Trips \& Published Paths}
+\begin{description}
+    \item[\textbf{[R25]}] The platform shall display a dashboard listing the user's historical trips and their data, sorted chronologically.
+    \item[\textbf{[R26]}] The platform shall allow registered users to view a list of paths published by them.
+    \item[\textbf{[R27]}] The platform shall allow registered users to edit the information of any of their published paths.
+    \item[\textbf{[R28]}] The platform shall allow registered users to delete any of their published paths.
+\end{description}
+
+\noindent
+\textbf{User Profile}
+\begin{description}
+    \item[\textbf{[R29]}] The platform shall display a user profile screen summarizing the main aggregate statistics.
+    \item[\textbf{[R30]}] The platform shall allow registered users to edit their profile information.
+\end{description}
+
+\vspace{2mm}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=1.1\linewidth]{RASD/Images/Use_case_diagram_1.png}
+        \label{fig:placeholder}
+    \end{figure}
