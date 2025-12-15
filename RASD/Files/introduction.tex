@@ -1,28 +1,28 @@
 \subsection{Purpose}
 The growing popularity of cycling as both a means of transportation and a recreational activity has increased the need for reliable, up-to-date information about bike paths. Cyclists often struggle to identify safe and efficient routes, especially when facing incomplete or outdated data regarding path conditions, obstacles, or environmental factors. At the same time, users who wish to contribute to the cycling community by sharing information about the paths they travel may find it difficult to organize, store, and communicate such data in a structured and meaningful way.
 The purpose of BBP is to provide an environment where cyclists can record their trips, contribute information about bike paths, and access curated, community-driven data to make informed decisions about their routes. Through a combination of manual input and automated data collection from mobile devices, users can keep track of their cycling activities while simultaneously improving the shared knowledge base about path conditions.
-BBP aims to give all users—whether registered or not—a clear understanding of the quality and safety of available bike paths, offering route visualizations, condition assessments, and recommendations based on consolidated and verified information. Transparency, reliability, and community collaboration are promoted at every step, ensuring that cyclists can navigate efficiently while benefiting from accurate and continuously updated path information.
+BBP aims to give all users, whether registered or not, a clear understanding of the quality and safety of available bike paths, offering route visualizations, condition assessments, and recommendations based on consolidated and verified information. Transparency, reliability, and community collaboration are promoted at every step, ensuring that cyclists can navigate efficiently while benefiting from accurate and continuously updated path information.
 \\
 
 \noindent
 BBP, therefore, intends to serve the following primary goals:
 
 \begin{description}
-    \item[\textbf{[G1]}] Registered users should have access to performance metrics about their trips.
+    \item[\textbf{[G1]}] Users should have access to performance metrics about their trips.
     
-    \item[\textbf{[G2]}] When available, users would like to be informed about meteorological information related to the paths of interest.
+    \item[\textbf{[G2]}] When available, users would like to be informed about meteorological information related to their trips.
     
-    \item[\textbf{[G3]}] Registered users should have the possibility to insert informations about the path of interest.
+    \item[\textbf{[G3]}] Users should have the possibility to share information about the path of interest.
     
-    \item[\textbf{[G4]}] Information about bike paths provided by registered users should be acquirable both manually and automatically.
+    \item[\textbf{[G4]}] Information about bike paths provided by registered users should be acquirable both manually and automatically (???????? secondo me è shared, non world phenomena).
     
-    \item[\textbf{[G5]}] Automatically detected issues should be validated by the registered user before becoming available to others.
+    \item[\textbf{[G5]}] Automatically detected issues should be validated by the registered user before becoming available to others (???????? secondo me è shared, non world phenomena).
     
-    \item[\textbf{[G6]}] Registered users should be able to make their provided information publishable to the community.
+    \item[\textbf{[G6]}] Registered users should be able to make their provided information publishable to the community. (????? uguale al terzo)
     
     \item[\textbf{[G7]}] Users should be able to visualize viable bike paths between two points.
     
-    \item[\textbf{[G8]}] Users should be able to compare alternative bike paths based on their overall score.
+    \item[\textbf{[G8]}] Users should be able to compare alternative bike paths.
 \end{description}
 
 
@@ -35,49 +35,71 @@ The system supports users in reviewing, correcting, and publishing the collected
 
 \subsubsection{World Phenomena}
 \begin{description}
-    \item[\textbf{[WP1]}] A user moves along a path.
+    \item[\textbf{[WP1]}] The user wants to keep track of his trips.
+
+    \item[\textbf{[WP2]}] The user wants to share a path to other people.
+
+    \item[\textbf{[WP3]}] The user wants to find the best path between two locations.
     
-    \item[\textbf{[WP2]}] The user’s physical speed varies over time.
+    \item[\textbf{[WP4]}] The user moves along a path.
     
-    \item[\textbf{[WP3]}] The user’s device experiences vibrations or impacts due to road conditions.
+    \item[\textbf{[WP5]}] The user’s physical speed varies over time.
     
-    \item[\textbf{[WP4]}] The user physically reaches the starting location of the trip.
+    \item[\textbf{[WP6]}] The user’s device experiences vibrations or impacts due to road conditions.
     
-    \item[\textbf{[WP5]}] The user arrives at the ending location of the trip.
+    \item[\textbf{[WP7]}] The user reaches the starting location of the trip.
     
-    \item[\textbf{[WP6]}] The user trip is conditioned by the weather conditions.
+    \item[\textbf{[WP8]}] The user arrives at the ending location of the trip.
+    
+    \item[\textbf{[WP9]}] The user trip is conditioned by the weather conditions.
+
+    \item[\textbf{[WP10]}] The user wants to interrupt the current trip.
 \end{description}
 
 \subsubsection{Shared Phenomena}
 \paragraph{World Controlled}
 \begin{description}
-    \item[\textbf{[SP1]}]  The user publishes information about the path in manual mode
+    \item[\textbf{[SPW1]}] The user publishes information about the path in manual mode.
 
-    \item[\textbf{[SP2]}] The user accepts path information suggested by automated mode
+    \item[\textbf{[SPW2]}] The user accepts path information suggested by automated mode.
 
-    \item[\textbf{[SP3]}] The system receives accelerometer readings generated by vibrations
+    \item[\textbf{[SPW2]}] The user edits path information suggested by automated mode. 
 
-    \item[\textbf{[SP4]}] The system receives gyroscope readings generated by device rotation 
+    \item[\textbf{[SPW3]}] The system receives accelerometer readings generated by vibrations.
 
-    \item[\textbf{[SP5]}] The system receives GPS location data from the cyclist’s device
+    \item[\textbf{[SPW4]}] The system receives gyroscope readings generated by device rotation.
 
-    \item[\textbf{[SP6]}]  Different users may observe the same path and report different aspects of it
+    \item[\textbf{[SPW5]}] The system receives GPS location data from the cyclist’s device.
 
-    \item[\textbf{[SP7]}] The user inserts an origin and a destination
+    \item[\textbf{[SPW6]}] The user sends a report. 
 
-    \item[\textbf{[SP8]}] The user starts the navigation
+    \item[\textbf{[SPW7]}]  Different users may observe the same path and report different aspects of it (???????????????????????)
+
+    \item[\textbf{[SPW8]}] The user inserts an origin and a destination.
+
+    \item[\textbf{[SPW9]}] The user starts the navigation.
+
+    \item[\textbf{[SPW10]}] The user edits profile information.
 \end{description}
 
 
 \paragraph{Machine Controlled}
 \begin{description}
-    \item[\textbf{[SP9]}] The system suggests path information to be inserted in automated mode 
+    \item[\textbf{[SPM1]}] The system suggests path information to be inserted in automated mode. 
 
-    \item[\textbf{[SP10]}] The system provides the top 5 paths based on the score
+    \item[\textbf{[SPM2]}] The system provides the top 5 paths between two locations based on the. score
 
-    \item[\textbf{[SP11]}] The system provides information about the path of interest
+    \item[\textbf{[SPM3]}] The system provides information about the path of interest.
 
-    \item[\textbf{[SP12]}] The system provides performance metrics about the user’s trip
+    \item[\textbf{[SPM4]}] The system provides performance metrics about the user’s trip.
+
+    \item[\textbf{[SPM5]}] The system show all user's trips. 
+
+    \item[\textbf{[SPM6]}] The system show all the published paths of the user.
+
+    \item[\textbf{[SPM7]}] The system show the main user statistics. 
+
+    \item[\textbf{[SPM8]}] The system updates the status of a path based on the reports.
 \end{description}
 \subsection{Definitions, Acronyms, Abbreviations}
 \subsubsection{Definitions}

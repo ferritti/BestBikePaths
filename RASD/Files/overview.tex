@@ -131,7 +131,6 @@
     \begin{itemize}
     \item The \textit{creates} relationship indicates the publication of the Path, while \textit{reports} tracks the contributions regarding obstacles and status, which is then aggregated by the \textit{System} (Merging).
     \item The \textit{status} attribute in \textit{Path} is initially set by the user who published the path, and is later derived from the aggregation of the most recent \textit{PathReport}.
-    \item The \textit{status} attribute in \textit{Path} and the \textit{status} attribute in \textit{Street} are independent from each other.
     \item The \textit{structures} attribute in \textit{Path} is a list of points in the map that allows the \textit{System} to draw the path. In manual mode they are manually inserted on the map by the user who publishes the path, while in automated mode they are automatically inserted by the \textit{System}.
     \end{itemize}
 
@@ -278,5 +277,5 @@ The lifecycle begins when a visitor without an account completes registration, c
     \noindent
     \begin{itemize}
     \item \textbf{Map Service}: it's responsible for providing the map that enables the graphical visualization of the paths. This is a critical dependency: if this service is unavailable, the core functionalities of the system cannot be performed.
-    \item \textbf{Meteo Service}: it's responsible for adding weather information to the users’ trips. This is a non-critical dependency: if this service is unavailable, the system will continue to function normally, simply omitting the weather information from the trip details. 
+    \item \textbf{Weather Service}: it's responsible for adding weather information to the users’ trips. This is a non-critical dependency: if this service is unavailable, the system will continue to function normally, simply omitting the weather information from the trip details. 
     \end{itemize}
