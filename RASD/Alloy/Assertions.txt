@@ -1,0 +1,45 @@
+//Verify that each report must be associated with a trip
+assert ReportRequiresTrip {
+    always (
+        all r: PathReport |
+            one t: Trip | r in t.emittedReports
+    )
+}
+
+//If a path does not receive reports, it will have the same status as the previous step 
+assert StatusStability {
+    always (all p: Path |
+        (p.reports' = p.reports) 
+        implies 
+        (p.currentStatus' = p.currentStatus)
+    )
+}
+
+//Verify that at each step, a user can submit at most one report
+assert OneReportPerUserPerStep {
+    always (
+        all u: User |
+        #{r: PathReport | r.author = u} =< 1
+    )
+}
+
+//Verify that each report is associated with exactly one trip
+assert ReportBelongsToOnePathOnly {
+    always (
+        all r: PathReport | 
+        one p: Path | r in p.reports
+    )
+}
+
+//Verify that the report’s author has completed a trip related to the reported path
+assert AuthorWasThere {
+    always (
+        all p: Path, r: p.reports |
+        some t: Trip | t.path = p and t.traveler = r.author
+    )
+}
+
+//The set of all existing PathReports must be equal to the union of the reports of all Paths
+assert ConservationOfReports {
+    always PathReport = Path.reports
+}

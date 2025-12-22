@@ -2,7 +2,7 @@
 
 \subsubsection{Scenarios}
 
-    \textbf{Registered users} 
+    \textbf{Users (authenticated)} 
     \vspace{2mm}
     \noindent
 
@@ -29,16 +29,7 @@
     \vspace{1mm}
     
     \noindent
-    User U wants to delete a previously published route. In the navbar, U clicks on “Published,” where he will find all the paths they have published. U clicks on the route they want to delete; the page for editing the route’s information will open, and they click on the icon associated with deleting the route.
-
-    
-    \vspace{3mm}
-    \noindent
-    \textbf{User edits the published path}
-    \vspace{1mm}
-    
-    \noindent
-    User U views their list of shared routes in the "Published" section and decides to update the details of a specific path due to changed road conditions. U taps on the path card to open the detailed view. To make changes, U presses the "Edit" button (the pencil icon) located in the header. The interface transitions to editing mode: the Start and End location names become editable text fields, and the read-only status badge is replaced by a selection grid, allowing U to quickly switch the rating (e.g., from "Maintenance Required" back to "Optimal"). Additionally, the description field becomes an active text area, allowing U to refine the route notes. Once the modifications are complete, U presses the "Save" button. The application updates the record and immediately reverts to the read-only detailed view, displaying the refreshed information.
+    User U wants to delete a previously published route. In the navbar, U clicks on “Published,” where he will find all the paths they have published. U clicks on the route they want to delete; the page for editing the route’s information will open, and they click on the icon associated with deleting the path.
 
     \vspace{3mm}
     \noindent
@@ -48,16 +39,6 @@
     \noindent
     User U wants to edit their personal information. In the navbar, U clicks on “Profile” and then on “Settings”, where he will find all their personal information with the option to modify it
 
-    \newpage
-    \noindent
-    \textbf{User logs into the application}
-    \vspace{1mm}
-    
-    \noindent
-    User U, currently viewing the Home Page in the unregistered state, clicks on "My Profile" in the navbar. This action directs them to the Login screen. On this screen, U is prompted to enter their credentials: they fill in the email address in the designated field and the corresponding password in the password field. After ensuring the data is correct, U clicks on the "Login" button. Upon successful validation, the system grants U access and redirects them back to the main application Home Page, now displaying features and content available to a registered user.
-    
-
-    \vspace{3mm}
     \noindent
     \textbf{User discards the collected path information}
     \vspace{1mm}
@@ -71,7 +52,7 @@
     \vspace{1mm}
     
     \noindent
-    User U wants to save the completed trip. Once the trip is finished, the end-of-path screen appears, showing the distance traveled and the average speed, along with the option to submit a report on the path’s status and obstacles. Finally, U clicks the "Back to Dashboard" button and the trips is saved into Recent Trips.
+    User U wants to save the completed trip. Once the trip is finished, the end-of-path screen appears, showing the distance traveled and the average speed, along with the option to submit a report on the path’s status and obstacles. Finally, U clicks the "Save trip" button and the trips is saved into Recent Trips.
 
 
     \vspace{3mm}
@@ -83,46 +64,56 @@
     User u enters the information for a new path, but the streets in the entered route are the same as those of an existing path. In this case, the application will notify the user with a warning that the entered streets correspond to those of an already existing path. The same thing happens whether the insertion is done manually or automatically
 
     \vspace{3mm}
-
+    \newpage
     \noindent
-    \textbf{Unregistered users} 
+    \textbf{Guests (unauthenticated)} 
     \vspace{2mm}
     
     \noindent
-    \textbf{User registers in the application}
+    \textbf{Guest registers in the application}
     \vspace{1mm}
     
     \noindent
-    User U, having navigated to the Login screen and clicks the "Registration" link presented on this page, is immediately redirected to the dedicated registration page. Here, U is required to complete the registration form by filling in all the necessary information: they enter a valid email address and define a secure password. After reviewing the entered data, U presses the final "Register" button. A verification email will then be sent to the provided email address, containing a verification code that has to be inserted in the application in the appropriate textbox, to confirm that the entered email address exists. Upon successful completion of the registration process, the system confirms the creation of the new account and redirects U back to the main Login screen, prompting them to perform their first access.
+    Guest G, having navigated to the Login screen and clicks the "Registration" link presented on this page, is immediately redirected to the dedicated registration page. Here, G is required to complete the registration form by filling in all the necessary information: they enter a valid email address and define a secure password. After reviewing the entered data, G presses the final "Register" button. A verification email will then be sent to the provided email address, containing a verification code that has to be inserted in the application in the appropriate textbox, to confirm that the entered email address exists. Upon successful completion of the registration process, the system confirms the creation of the new account and redirects G back to the main Login screen, prompting him to perform their first access.
 
     \vspace{3mm}
 
     \noindent
-    \textbf{All users} 
-    \vspace{2mm}
-  
-    \noindent
-    \textbf{User searches for a path} 
+    \textbf{Guest logs into the application}
     \vspace{1mm}
     
     \noindent
-     User U wants to find the best path to their destination. From the main map interface, U enters the desired origin and destination points into the floating search bar. The system calculates and displays the five highest-scoring paths on the map. Each path is shown with its associated score, including the visualization of the corresponding obstacles present along the path. The path with the highest score is highlighted in teal to indicate the recommended route, while the other alternatives are displayed for comparison, allowing U to choose the best option before starting the ride.
+    Guest G, currently viewing the Home Page in the unregistered state, clicks on "My Profile" in the navbar. This action directs G to the Login screen. On this screen, G is prompted to enter their credentials: they fill in the email address in the designated field and the corresponding password in the password field. After ensuring the data is correct, G clicks on the "Login" button. Upon successful validation, the system grants G access and redirects him to the profile page.
+
+    \vspace{3mm}
+
+    \noindent
+    \textbf{Cyclists (users and guests)} 
+    \vspace{2mm}
+  
+    \noindent
+    \textbf{Cyclist searches for a path} 
+    \vspace{1mm}
+    
+    \noindent
+     Cyclist C wants to find the best path to their destination. From the main map interface, C enters the desired origin and destination points into the floating search bar. The system calculates and displays the five highest-scoring paths on the map. Each path is shown with its associated score, including the visualization of the corresponding obstacles present along the path. The path with the highest score is highlighted in teal to indicate the recommended route, while the other alternatives are displayed for comparison, allowing C to choose the best option before starting the ride.
 
      \vspace{2mm}
   
     \noindent
-    \textbf{User starts a navigation} 
+    \textbf{Cyclist starts a navigation} 
     \vspace{1mm}
     
     \noindent
-     After entering the origin and destination and selecting the desired path, user U wants to start navigation.
-    From the main map interface, U clicks the "Start Navigation" button, and the navigation screen opens. On the map, a cursor representing U’s current position is displayed; at the top, the current speed and street name are shown, while at the bottom there is an "Exit Navigation" button to end the navigation.
+    After entering the origin and destination and selecting the desired path, cyclist C wants to start navigation.
+    From the main map interface, C clicks the "Start Navigation" button, and the navigation screen opens. On the map, a cursor representing C’s current position is displayed; at the top, the current speed and street name are shown, while at the bottom there is an "Exit Navigation" button to end the navigation.
 
 \newpage
 \subsubsection{Domain Class Diagram}
     \begin{figure}[!h]
         \centering
-        \includegraphics[width=1.1\linewidth]{RASD/Images/Domain Class Diagram.png}
+        \includegraphics[width=1\linewidth]{RASD/Images/Domain Class Diagram.png}
+        \caption{Domain Class Diagram}
         \label{fig:placeholder}
     \end{figure}
 
@@ -135,39 +126,42 @@
     \end{itemize}
 
 \newpage
-\subsubsection{State Diagram}
+\subsubsection{State Diagrams}
     \noindent
-    \textbf{Trip lifecycle} 
+    \textbf{Trip Lifecycle} 
     \vspace{2mm}
     \begin{figure}[!h]
         \centering
-        \includegraphics[width=1\linewidth]{RASD/Images/SD_trip_lifecycle.png}
+        \includegraphics[width=1\linewidth]{RASD/Images/StateDiagram/TripLifecycle.png}
+        \caption{Trip Lifecycle State Diagram}
         \label{fig:placeholder}
     \end{figure}
 \noindent \\
-The Trip lifecycle state diagram illustrates the two operational modes through which the entity is managed by the system.In the upper branch, dedicated to assisted navigation, the user enters the desired origin and destination; the system identifies a set of paths with the highest scores, from which the user selects their preferred route. Navigation is then initiated: during this phase, the system guides the user to the destination while simultaneously recording driving performance metrics. The flow concludes with a review phase, during which data can still be modified before completion.In parallel, the lower branch describes the automated mode, designed for passive tracking: here, the trip immediately enters the recording phase, allowing for intermediate pauses. The recording must then be stopped to proceed to the final validation of the acquired data.Both flows finally converge in the concluding saving state, ensuring that, regardless of the input mode, all metrics, coordinates, and reports are correctly persisted in the system database.
+The Trip Lifecycle State Diagram illustrates the two operational modes managed by the system. In the upper branch, dedicated to assisted navigation, the process begins with the user entering a destination. While the system automatically detects the current position as the default origin, the workflow is designed to be flexible: as shown by the feedback transition from Path Selection to Planning, the user can subsequently modify both the origin and the destination if the calculated paths are unsatisfactory, triggering a new planning phase. Once a route is confirmed, the system transitions to Ready to Start and then to Navigating. Upon completion, the lifecycle enters the Retrieving Weather Data state to integrate meteorological information, followed by the Path Report state, where the user can review and modify the report details. In parallel, the lower branch describes the automated mode, designed for passive tracking. Here, the trip immediately enters the Recording phase from the uninitialized state. Once recording is stopped, the process moves to Validating, where the acquired data can be reviewed. Both flows finally converge in the concluding Saving Trip state, ensuring that regardless of the input mode, all metrics, coordinates, weather data, and reports are correctly persisted in the system database.
     \newpage
     \vspace{2mm}
     \noindent
-    \textbf{Path lifecycle} 
+    \textbf{Path Lifecycle} 
     \vspace{2mm}
     \begin{figure}[!h]
         \centering
-        \includegraphics[width=1\linewidth]{RASD/Images/SD_path_lifecycle.png}
+        \includegraphics[width=1\linewidth]{RASD/Images/StateDiagram/PathLifecycle.png}
+        \caption{Path Lifecycle State Diagram}
         \label{fig:placeholder}
     \end{figure}
 
 \noindent
-The Path lifecycle state diagram illustrates the process of creating and publishing a new path within the system. Starting from the initial state, the flow branches into two distinct operational modes.The manual mode allows the user to compose the path by interactively selecting existing streets of interest on the map and manually placing obstacle markers, with the ability to freely switch between these activities.Alternatively, the automated mode acquires the track via real-time GPS recording, handling temporary interruptions through the pause state.Both flows converge in the validation phase; in this state, the user can review and eventually modify the collected information before final confirmation. The cycle concludes with the publication of the path, or with the discard of the draft if not confirmed.
+The Path Lifecycle State Diagram illustrates the process of creating and publishing a new path within the system. Starting from the initial state, the flow branches into two distinct operational modes.The manual mode allows the user to compose the path by interactively selecting existing streets of interest on the map and manually placing obstacle markers, with the ability to freely switch between these activities. Alternatively, the automated mode acquires the track via real-time GPS recording. Both flows converge in the validation phase; in this state, the user can review and eventually modify the collected information before final confirmation. The cycle concludes with the publication of the path, or with the discard of the path if not confirmed.
 
 \newpage
     \vspace{2mm}
     \noindent
-        \textbf{User Profile lifecycle} 
+        \textbf{User Profile Lifecycle} 
     \vspace{2mm}
     \begin{figure}[!h]
         \centering
-        \includegraphics[width=1\linewidth]{RASD/Images/SD_user_profile_lifecycle.png}
+        \includegraphics[width=1\linewidth]{RASD/Images/StateDiagram/UserProfileLifecycle.png}
+        \caption{User Profile Lifecycle State Diagram}
         \label{fig:placeholder}
     \end{figure}
 
@@ -206,6 +200,7 @@ The lifecycle begins when a visitor without an account completes registration, c
     The user draws the path and adds obstacles directly on the map, and then enters the remaining information.
 
     \vspace{2mm}
+    \newpage
     \noindent
     \textbf{Publication of a path in automated mode} 
     \vspace{1mm}
@@ -245,17 +240,17 @@ The lifecycle begins when a visitor without an account completes registration, c
     \vspace{1mm}
     
     \noindent
-    The system collects path reports from multiple users and merges conflicting information. It calculates the current status of a path based on the freshness of the reports and the number of confirming data obtained.
+    The system collects path reports from multiple users and merges conflicting information. It calculates the current status of a path based on the freshness of the reports and the number of confirming data obtained. For the obstacles, it merges all the obstacles reported in all reports and adds them to the associated path. If an obstacle is removed in one report but kept in another, it will be retained. 
 
-\subsection{User characteristics}
+    \subsection{User characteristics}
 
-    \subsubsection{Registered users}
+    \subsubsection{Guests}
     \noindent
-    Registered users are able to login to the platform. Their profiles contain personal information and some statistics such as total kilometers travelled, total trips completed, total paths published and the average speed of their trips. In addition to all the features available to unregistered users, they can publish new paths (in either manual or automated mode) and submit reports regarding existing paths. Furthermore, they can record their trips to populate their history and view detailed statistics at the end of the navigation.
+    Guests include casual users, tourists, or people who simply want to find a bike path without tracking their data. They can search for the best paths between two locations, select a desired path, and start the real-time navigation to follow the path, but without the ability to save the trip or view post-activity statistics.
 
-    \subsubsection{Unregistered users}
+    \subsubsection{Users}
     \noindent
-    Unregistered users include casual users, tourists, or people who simply want to find a bike path without tracking their data. They can search for the best paths between two locations, select a desired path, and start the real-time navigation to follow the path, but without the ability to save the trip or view post-activity statistics.
+    Users are able to login to the platform. Their profiles contain personal information and some statistics such as total kilometers travelled, total trips completed, total paths published and the average speed of their trips. In addition to all the features available to guests, they can publish new paths (in either manual or automated mode) and submit reports regarding existing paths. Furthermore, they can record their trips and save them to populate their history and view detailed statistics at the end of the navigation.
 
 \newpage
 \subsection{Assumptions, dependencies and constraints}

@@ -1,0 +1,49 @@
+\subsection{Generation of Mockups and Visual Support}
+
+While tools such as ChatGPT were utilized transversally to support drafting, code refinement, and logical requirement analysis, the specific phase of User Interface Prototyping relied on models specialized in image generation.
+
+\noindent
+Specifically, Google AI Studio was employed to interact with the Gemini model. Thanks to its multimodal capabilities, it was possible to translate the textual descriptions of Use Cases into high-fidelity visual mockups. This approach allowed for a rapid visualization of the spatial organization of elements (layout).
+
+\subsection{Example of interation}
+ A significant example of this interaction is represented by the definition of the Homepage. Initially, a prompt was provided to the model aimed at establishing the general structure and color palette, inspired by leading market competitors.
+
+\begin{PromptBox}
+\quad Generate a mockup for the homepage of a mobile GPS navigation application. The interface must be in "Dark Mode", featuring a dark night-time street map background similar to Google Maps. At the bottom of the screen, include a navigation bar with four sections: "Home", "Published", "Recent Trip", and "Profile". Position two round floating buttons stacked vertically immediately above this bar in the bottom right corner: one for "Manual Mode" and the other for "Automated Mode".
+
+\vspace{0.3cm}
+
+\end{PromptBox}
+
+\begin{ChatGPTBad}
+\quad Here is a proposal for the Homepage design in night mode. The generated image presents: \begin{itemize} \item A dark-toned cartographic background (midnight blue and charcoal) with highlighted roads. \item A bottom navigation bar featuring the four requested sections. \item The two action buttons ("Manual" and "Automated") positioned at the bottom right for easy thumb access. \end{itemize}
+
+\vspace{0.3cm}
+\end{ChatGPTBad}
+
+\noindent
+Although the structure was correct, the first iteration lacked crucial elements for immediate usability, such as a clear indication of the user's position and the destination input field. A second refinement prompt was therefore necessary to integrate these details without altering the already approved visual style.
+
+\newpage
+\begin{PromptBox}
+\quad Based on the image just generated, modify only the top area and the center of the map. Add a floating search bar at the top of the screen specifically for entering a destination (with a placeholder like "Where to?"). Additionally, place a prominent cursor, such as a glowing blue arrow, in the center of the map to indicate the user's current position. Ensure that the rest of the existing interface, including the bottom navigation bar, remains unchanged.
+
+\vspace{0.3cm}
+\end{PromptBox}
+
+
+\begin{ChatGPTGood}
+\quad Updated the mockup by integrating the requested elements: \begin{itemize} \item \textbf{Search Bar:} Inserted at the top with rounded corners and a search icon, maintaining the transparency typical of modern UIs. \item \textbf{Position Cursor:} Added a blue indicator with a slight glow effect at the center of the map to ensure immediate contrast against the dark background. \end{itemize} The rest of the layout (navbar and mode buttons) remained unchanged.
+
+\vspace{0.3cm}
+
+\end{ChatGPTGood}
+
+\vspace{0.5cm}
+
+\noindent
+\textbf{Conclusion on the Iteration}
+
+\noindent
+This two-phase process allowed for the separation of the structural layout definition (navbar, map, buttons) from the functional details (search bar, cursor). The model demonstrated the ability to maintain stylistic consistency between generations, integrating the requested modifications naturally within the pre-existing visual context.
+
