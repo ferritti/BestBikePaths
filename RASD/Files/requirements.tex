@@ -1023,7 +1023,6 @@ The functions used in the sequence diagrams follow these conventional meanings:
 
 
 
-\newpage
 \begin{table}[H]
     \centering
     % Aumenta lo spazio tra le righe per leggibilità
@@ -1143,10 +1142,10 @@ This section explains the design constraints that the platform must respect, cov
 The system is designed to ensure high availability for Users, targeting an uptime of 99.9\%. To achieve this, the platform relies on redundant cloud infrastructure to minimize the risk of service interruptions. Furthermore, the mobile application is designed to be resilient to network failures; it utilizes local caching mechanisms to ensure that critical features, such as path recording, remain functional and no data is lost even when the device temporarily loses connectivity to the server.
 
 \subsubsection{Security}
-The system handles highly sensitive information, including real-time geolocation history and personal user profiles. Consequently, all stored data must be protected with strong encryption algorithms (at rest), and data in transit must always be encrypted via HTTPS to ensure security against interception. The system may be particularly susceptible to API abuse and unauthorized access attempts; hence, it should incorporate robust authentication measures (such as token-based access) and rate-limiting strategies to prevent or reduce the impact of such attacks.
+The system handles highly sensitive information, including real-time geolocation history and personal user profiles. Consequently, these data must be protected with strong encryption algorithms (at rest), and data in transit must always be encrypted via HTTPS to ensure security against interception. The system may be particularly susceptible to API abuse and unauthorized access attempts; hence, it should incorporate robust authentication measures (such as token-based access) and rate-limiting strategies to prevent or reduce the impact of such attacks.
 
 \subsubsection{Maintainability}
-The backend components should be designed to be easily scalable, maintainable, reusable, and testable to handle a growing number of cyclists and tracks. To achieve this, the system should implement modular design principles and ideally adopt a microservice architecture. The code should be readable and fully documented. Documentation should include detailed and well-analyzed API definitions, a comprehensive description of the system architecture, and should clearly define the automated testing strategies employed to prevent regressions.
+The backend components should be designed to be easily scalable, maintainable, reusable, and testable to handle a growing number of cyclists and tracks. To achieve this, the system should implement well-defined architecture that allows for easy updates and modifications both on the front and the back end. The code should be readable and fully documented. Documentation should include detailed and well-analyzed API definitions, a comprehensive description of the system architecture, and should clearly define the automated testing strategies employed to prevent regressions.
 
 \subsubsection{Portability}
-As a mobile-centric platform, the client application must be compatible with the major mobile operating systems, specifically Android and iOS. It should efficiently utilize native hardware features (such as GPS and accelerometers) while ensuring a consistent user experience. Moreover, the interface should be optimized for use on various device form factors, ensuring flexibility and usability across both standard smartphones and larger tablets used for route planning.
+As a mobile-centric platform, the client application must be compatible with the major mobile operating systems, specifically Android and iOS. It should efficiently utilize native hardware features (such as GPS and accelerometers) while ensuring a consistent user experience. Moreover, the interface should be optimized for use on various device form factors, ensuring flexibility and usability across both standard smartphones and larger tablets used for path planning.

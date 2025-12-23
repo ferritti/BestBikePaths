@@ -5,7 +5,7 @@ fact PathStatusFromReports {
             p.currentStatus = s
             all s2: PathStatus - s |
                 #(p.reports & reportedStatus.s) >= #(p.reports & reportedStatus.s2)
-            no s_tie: PathStatus - s | 
+            no s_tie: PathStatus - s | //reportedStatus.s2 = { r : PathReport | r.reportedStatus = s2 }
                 #(p.reports & reportedStatus.s_tie) = #(p.reports & reportedStatus.s) 
                 and 
                 s_tie in s.nexts 
