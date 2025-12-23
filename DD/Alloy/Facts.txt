@@ -1,0 +1,79 @@
+//Reports merging operation
+fact PathStatusFromReports {
+    always (all p: Path |
+        one s: PathStatus | {
+            p.currentStatus = s
+            all s2: PathStatus - s |
+                #(p.reports & reportedStatus.s) >= #(p.reports & reportedStatus.s2)
+            no s_tie: PathStatus - s | //reportedStatus.s2 = { r : PathReport | r.reportedStatus = s2 }
+                #(p.reports & reportedStatus.s_tie) = #(p.reports & reportedStatus.s) 
+                and 
+                s_tie in s.nexts 
+        })
+}
+
+//Paths must include the same obstacles reported in the reports; if a path receives multiple reports, it will contain the union of all obstacles from those reports
+fact ObstaclesEvolution {
+    always (all p: Path | 
+        (some p.reports) implies {
+            p.activeObstacles = p.reports.reportedObstacles
+        }
+    )
+}
+
+//Obstacles must be associated with a Path or a Report; they cannot be unlinked from everything
+fact NoDisconnectedObstacles {
+  always (Obstacle in Path.activeObstacles + PathReport.reportedObstacles)
+}
+
+//Paths that do not receive any reports in the next step will have the same obstacles as in the previous step
+fact ObstaclesPersistenceWithoutReports {
+    always (all p: Path |
+        no p.reports' implies
+            p.activeObstacles' = p.activeObstacles
+    )
+}
+
+//report management
+fact ReportTripSystemIntegrity {
+    always {
+        //Each report must be associated with exactly one trip
+        all r: PathReport | one t: Trip | t.emittedReports = r
+
+        -- If a trip t has emitted a report r, then:
+		-- - The path of the trip must be the same as the report’s path
+		-- - The traveler must be the author of the report
+        all t: Trip | all r: t.emittedReports | {
+            t.path = reports.r
+            t.traveler = r.author
+        }
+
+        //The submittedReports set must contain all and only the reports written by the user
+        all u: User | u.submittedReports = {r: PathReport | r.author = u}
+
+	 no (Trip & Trip')
+    }
+}
+
+//There cannot be multiple paths with the same streets
+fact UniquePathTopology {
+    all p1, p2: Path | p1.streets = p2.streets => p1 = p2
+}
+
+//At any step, a user can make at most one trip
+fact OneTripPerUserPerStep {
+    always (
+        all u: User |
+            lone t: Trip | t.traveler = u
+    )
+}
+
+//If an obstacle is removed from a path, it is removed from all paths that contain it
+fact ObstacleDeletionLogic {
+    always (all o: Obstacle |
+        (o in Path.activeObstacles and o not in Path.activeObstacles') implies {
+            (some r: PathReport' | o in r.reportedObstacles) implies o in Obstacle'
+            else o not in Obstacle'
+        }
+    )
+}

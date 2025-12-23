@@ -1,0 +1,27 @@
+pred simulation {
+    no PathReport
+	#Path = 3
+	#Street = 3
+    #User = 4
+    after {
+	    some disj p1, p2, p3: Path {
+            #p1.reports = 2
+            all r1, r2: p1.reports | r1 != r2 implies r1.reportedStatus != r2.reportedStatus
+            #p2.reports = 1
+            #p3.reports = 1
+        }
+	    #Obstacle = 4
+        no (PathReport & PathReport')
+    }
+    after after {
+	    #Obstacle = 2
+	    #Trip = 4
+  	    one p: Path | {
+	        p.reports = PathReport
+	        #{r: p.reports | r.reportedStatus = Medium} = 2
+	        #{r: p.reports | r.reportedStatus = Sufficient} = 1
+	    }
+    }
+}
+
+run simulation for 10

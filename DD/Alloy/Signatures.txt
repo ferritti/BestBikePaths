@@ -1,0 +1,38 @@
+enum PathStatus { 
+    Optimal, 
+    Medium, 
+    Sufficient, 
+    MaintenanceRequired
+}
+
+sig User {
+	var submittedReports: set PathReport
+}
+
+var sig Trip {
+    var traveler: one User,
+    var path: one Path,
+    var emittedReports: lone PathReport
+}
+
+sig Path {
+    author: one User,
+        var reports: set PathReport,
+        var currentStatus: one PathStatus,
+        var activeObstacles: set Obstacle,
+        streets: some Street
+} 
+
+var sig PathReport {
+    var author: one User,
+    var reportedStatus: one PathStatus,
+    var reportedObstacles: set Obstacle,
+} {
+    this in Path.reports
+}
+
+var sig Obstacle {} 
+
+sig Street {} {
+    this in Path.streets
+}

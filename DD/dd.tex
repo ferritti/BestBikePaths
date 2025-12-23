@@ -1,0 +1,218 @@
+\ifdefined\commandsFileStandaloneCompilation
+\else
+\input{commandsFile}
+\fi
+
+\usepackage{tikz}
+
+\usepackage{tabularx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{Alloy/alloy-style}
+
+
+\usepackage[most]{tcolorbox}
+
+\tcbset{
+  chatstyle/.style={
+    breakable,
+    enhanced,
+    rounded corners,    % angoli arrotondati
+    arc=2mm,            % raggio arrotondamento
+    boxrule=1pt,
+    coltitle=black,      % Colore del testo del titolo
+    fonttitle=\bfseries, % Titolo in grassetto
+    attach title to upper,
+    bottomtitle=1mm,
+    toptitle=1mm,
+    titlerule=0.5pt
+  }
+}
+
+% Box per il Prompt
+\newtcolorbox{PromptBox}{
+  chatstyle,
+  colback=blue!5,
+  colframe=blue!60!black,
+  title=Prompt
+}
+
+% Box per Gemini corretto (verde)
+\newtcolorbox{GeminiGood}{
+  chatstyle,
+  colback=green!5,
+  colframe=green!60!black,
+  title=Gemini
+}
+
+% Box per Gemini errato (rosso)
+\newtcolorbox{GeminiBad}{
+  chatstyle,
+  colback=red!5,
+  colframe=red!60!black,
+  title=Gemini
+}
+
+% Box per ChatGPT corretto (verde)
+\newtcolorbox{ChatGPTGood}{
+  chatstyle,
+  colback=green!5,
+  colframe=green!60!black,
+  title=ChatGPT
+}
+
+% Box per ChatGPT errato (rosso)
+\newtcolorbox{ChatGPTBad}{
+  chatstyle,
+  colback=red!5,
+  colframe=red!60!black,
+  title=ChatGPT
+}
+
+
+\begin{document}
+
+%TITLE PAGE
+
+\begin{titlepage}
+
+% --- BLOCCO SEGNALIBRO ---
+\begin{tikzpicture}[remember picture, overlay]
+    \coordinate (TopLeft) at (current page.north west);
+    
+    % --- MODIFICA QUI ---
+    % Sostituisci '\draw' con '\fill'
+    \fill[Blue, opacity=0.8] % <<< CAMBIATO QUI
+        ([xshift=3cm]TopLeft) 
+        -- ++(0, -6cm)        
+        -- ++(1.25cm, 1.5cm)  
+        -- ++(1.25cm, -1.5cm) 
+        -- ++(0, 6cm)         
+        -- cycle;             
+\end{tikzpicture}
+% --- FINE BLOCCO SEGNALIBRO ---
+
+
+% --- INTESTAZIONE: INFO PROGETTO E LOGO ---
+\noindent 
+\begin{minipage}[t]{0.7\textwidth} 
+    % Vuoto
+\end{minipage}
+\hfill 
+\begin{minipage}[t]{0.45\textwidth} 
+    \vspace{0pt} 
+    \flushright 
+    \includegraphics[width=\linewidth]{Images/PolimiLogo}
+\end{minipage}
+
+\vfill 
+
+% --- TITOLO E SOTTOTITOLO ---
+\begin{flushleft}
+    {\textcolor{Blue}{\textbf{\Huge{Design Document}}}}
+    
+    \vspace{1cm} 
+    {\textcolor{MyGray}{\textbf{\LARGE{Best Bike Paths Project}}}}
+\end{flushleft} 
+
+\vfill
+
+% --- PIÈ DI PAGINA: DATA ---
+\begin{flushleft} 
+    {\large 2025-2026}
+\end{flushleft} 
+
+\end{titlepage}
+%Define deliverable specific info
+%Replace cell contents where needed
+\begin{table}[h!]
+\begin{tabu} to \textwidth { X[0.3,r,p] X[0.7,l,p] }
+\hline
+
+\textbf{Deliverable:} & DD\\
+\textbf{Title:} & Design Document \\
+\textbf{Authors:} & Andrea Ferritti, Jieke Lin, Tommaso Tosca \\
+\textbf{Version:} & 1.0 \\ 
+\textbf{Date:} & 23-Dicembre-2025 \\
+\textbf{Download page:} & https://github.com/ferritti/FerrittiLinTosca \\
+\textbf{Copyright:} & Copyright © 2025, A. Ferritti, J. Lin, T. Tosca – All rights reserved \\
+\hline
+\end{tabu}
+\end{table}
+
+
+
+
+\setcounter{page}{2}
+
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\newpage
+\addcontentsline{toc}{section}{Table of Contents}
+\tableofcontents
+\newpage
+\addcontentsline{toc}{section}{List of Figures}
+\listoffigures
+\addcontentsline{toc}{section}{List of Tables}
+\listoftables
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+{\color{Blue}{\section{Introduction}}}
+\label{sect:introduction}
+\input{Files/introduction}
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+{\color{Blue}{\section{Architectural Design}}}
+\label{sect:design}
+\input{Files/design}
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+{\color{Blue}{\section{User Interface Design}}}
+\label{sect:interface}
+\input{Files/interface}
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+
+\clearpage
+{\color{Blue}{\section{Requirements Traceability}}}
+\label{sect:requirements}
+\input{Files/requirements}
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+
+\clearpage
+{\color{Blue}{\section{Implementation, Integration, and Test Plan}}}
+\label{sect:implementation}
+\input{Files/implementation}
+%------------------------------------------------------------------------------------------------------------------------------------------------
+\clearpage
+{\color{Blue}{\section{Use of Generative AI}}}
+\label{sect:generativeai}
+\input{Files/generativeai}
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+
+\clearpage
+{\color{Blue}{\section{Effort Spent}}}
+\label{sect:effort}
+\input{Files/effort}
+
+
+%------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+%\clearpage
+%\addcontentsline{toc}{section}{References}
+%\bibliographystyle{plain}
+%\bibliography{main}
+%------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+\end{document}
