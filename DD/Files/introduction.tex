@@ -1,0 +1,79 @@
+\subsection{Purpose}
+The purpose of the Best Bike Paths (BBP) system is to provide a software architecture that enables cyclists to record their trips, creating a personal history of their activities, while simultaneously building a shared, community-driven inventory of bike paths. BBP allows registered users to insert information about path quality and obstacles either manually or through an automated data collection process that leverages mobile device sensors (GPS, accelerometer, gyroscope). Furthermore, the system processes this distributed data to calculate path scores, merging conflicting reports based on freshness and consensus, to allow any user to visualize the safest and most effective paths on a map.
+The reader can find more information about the problem in the RASD document. In the remaining part of this chapter and the subsequent sections, we will present a summary of the technical choices made for the creation of the platform. This includes the definition of the architectural style, the decomposition into high-level components, and the design of the user interfaces. We also include the specific Goals we are trying to accomplish with this design and the Definitions, Acronyms, and Abbreviations used throughout this document.
+
+\subsubsection{Goals}
+\begin{description}
+    \item[\textbf{[G1]}]Registered users would like to maintain a history of their trips.
+    
+    \item[\textbf{[G2]}] Registered users would like to access performance metrics about their trips.
+    
+    \item[\textbf{[G3]}] When available, registered users would like to be informed about meteorological information related to their trips.
+    
+    \item[\textbf{[G4]}] Registered users would like to share information about specific bike paths.
+    
+    \item[\textbf{[G5]}] Users would like to find the optimal bike path between an origin and a destination by comparing viable alternatives based on efficiency and status.
+    
+    \item[\textbf{[G6]}] Users would like to access reliable and up-to-date shared information about bike paths.
+\end{description}
+
+\subsection{Scope}
+The scope of this Design Document is to translate the requirements previously defined in the RASD into a concrete software architecture for the Best Bike Paths (BBP) system. This document provides a comprehensive technical overview of the system, focusing on the decomposition of high-level components, the design of internal and external interfaces, and the rationale behind the selected architectural patterns.
+Beyond the structural design, this document establishes the guidelines for the subsequent development phases. It defines the Implementation, Integration, and Test Plan, outlining the methodologies and tools that will be employed to ensure the correct functioning of the platform.
+
+\subsection{Main Architectural Choices}
+The system follows a four-tier architectural style, logically organized into presentation tier, web tier, business tier and data tier. The presentation tier is responsible for the user interface and the interaction with the platform, providing a responsive experience for visualizing paths and managing cycling activities. It also interact with the map service to get the map and the graphical libraries. Requests from the client are handled by the web tier, where a web server acts as the primary coordinator and forwards them to the business tier, which is responsible for the platform’s logic. The web tier also communicates with the weather service through an external proxy. The data tier ensures the persistence and integrity of all system information through dedicated Database Management Systems (DBMS), and to maximize security, the data tier is hosted within a private network, accessible only by the business tier through secure, internal connections. This architectural choice allows high scalability, maintainability, and security. The use of a web server and a dedicated proxy centralizes traffic control and security policies, shielding the core logic and sensitive data from direct exposure to the public internet. Furthermore, this separation of concerns ensures that the platform remains flexible and highly available through component replication, allowing developers to update the user interface or integrate new external services without compromising the stability of the underlying data and business processes.
+
+\subsection{Definitions, Acronyms, Abbreviations}
+The following section provides a comprehensive list of definitions, acronyms, and abbreviations used throughout this document. Its purpose is to assist the reader in understanding specific technical terminology and domain-specific concepts adopted in the design of the BBP system.
+
+\subsubsection{Definitions}
+\begin{itemize}
+    \item \textbf{Bike Path}: A road segment or sequence of segments that is suitable for bicycles. A path is considered bike-safe if it includes a dedicated bike lane or if car traffic is rare and speed limits are compatible with typical bike speeds.
+    \item \textbf{Trip}: A cycling activity recorded by a registered user. A trip includes GPS tracking data, performance metrics (distance, average speed, etc.), and, when available, meteorological information retrieved from an external weather service.
+    \item \textbf{Performance Metrics}: Statistics associated with a trip, such as total distance, duration, average speed, maximum speed and other cycling-related measures.
+    \item \textbf{Meteorological Information}: External data enriched by BBP when available, including temperature, weather conditions (sunny, cloudy, rainy…), wind speed, humidity, and similar environmental indicators.
+    \item \textbf{Manual Mode}: A mode in which a user manually enters information about a bike path, specifying street names, path segments, their status, and any obstacles.
+    \item \textbf{Automated Mode}: A mode in which BBP automatically collects data from the user’s mobile device while biking. Data includes GPS traces to infer the following path, accelerometer and gyroscope readings to detect potential potholes or obstacles, and speed information to infer that the user is cycling.
+    \item \textbf{Obstacle}: Any relevant physical irregularity affecting the bike path (e.g., potholes, bumps, debris). In automated mode, obstacles are inferred from device sensors and later confirmed by the user.
+    \item \textbf{Status}: A qualitative assessment of a bike path segment. Possible values include: optimal, medium, sufficient, requires maintenance, etc. Status can be user-generated (manual or automatic) and may be aggregated from multiple users.
+    \item \textbf{Information Publishable}: Verified and user-approved data about a bike path (status, obstacles) that can be made publicly accessible to the community.
+    \item \textbf{Score}: A computed score used to rank alternative bike paths between an origin and a destination. The score considers both the quality (status) of the path and its effectiveness in connecting the two points.
+    \item \textbf{External proxy}: An external proxy server acts as an intermediary between a client device and the Internet. It intercepts outgoing HTTP/HTTPS requests, forwards them to external services using its own IP address, thereby masking the client’s IP, and relays the corresponding responses back to the client.
+    \item \textbf{4-tier architecture}: A software architecture that divides the software into four different tiers: presentation tier, web tier, application tier, and data tier.
+    \item \textbf{Query}: A database query is a request to retrieve or update data that meets a specific search criterion.
+\end{itemize}
+
+\subsubsection{Acronyms}
+\begin{itemize}
+    \item \textbf{BBP:} Best Bike Path.
+    \item \textbf{GPS:} Global Positioning System.
+    \item \textbf{API:}  Application Programming Interface.
+    \item \textbf{DMZ:}  Demilitarized zone.
+    \item \textbf{RASD:} Requirements Analysis and Specification Document.
+    \item \textbf{HTTPS:} Hypertext Transfer Protocol Secure.
+\end{itemize}
+
+\subsubsection{Abbreviations}
+\begin{itemize}
+    \item \textbf{SD:} Sequence diagram.
+\end{itemize}
+
+\subsection{Revision history}
+Version 1.0: 7/01/2026
+\subsection{Reference Documents}
+\begin{itemize}
+    \item Assignment RDD AY 2025-2026
+    \item Software Engineering 2 AY 2025/2026 slides "CreatingDD"
+\end{itemize}
+
+\subsection{Document Structure}
+\begin{enumerate}
+    \item \textbf{Introduction:} This chapter sets the context for the design process. It outlines the purpose and scope of the document, lists the definitions and acronyms essential for understanding the technical terminology, and references the materials that served as a baseline for this work.
+    \item \textbf{Architectural Design:} This is the core of the document, offering a comprehensive breakdown of the BBP system. It starts with a high-level overview of the macro-components and their relationships, then drills down into a detailed description of individual modules and their interfaces. This section also rationalizes the choice of specific architectural styles and patterns, concluding with the deployment strategy and runtime views that illustrate the system's dynamic behavior.
+    \item \textbf{User Interface Design:} This section focuses on the interaction layer of the application. Based on the descriptions provided in the RASD document, it presents the visual layout of the system through mockups.
+    \item \textbf{Requirements Traceability:} To ensure complete coverage of the project specifications, this chapter maps the functional requirements defined in the RASD to the specific design components and modules described in this document.
+    \item \textbf{Implementation, Integration, and Test Plan:} This chapter defines the roadmap for the construction of the system. It specifies the sequence in which components will be implemented and integrated, and details the testing strategies and tools that will be employed to verify the software's correctness and quality.
+    \item \textbf{Use of Generative AI}: In this chapter, examples of interactions are provided to explain how AI was used to support the drafting of the document.
+    \item \textbf{Effort Spent:}It reports the time spent to produce this document, organized by section.
+\end{enumerate}

@@ -1,0 +1,564 @@
+% Components list
+\begin{tabular}{p{8cm} p{8cm}}
+\textbf{\color{titleColor}Internal Components}  &  \textbf{\color{titleColor}External Components} \\
+\begin{enumerate}[label={\color{titleColor}[C\arabic*]}]
+    \item ClientApplication
+    \item WebServer
+    \item AccountManager
+    \item RegistrationManager
+    \item AuthManager
+    \item ProfileManager
+    \item PathManager
+    \item AutomatedModeManager
+    \item PublishedPathManager
+    \item PathSearchManager
+    \item TripManager
+    \item HistoryManager
+    \item NavigationManager
+    \item ReportManager
+    \item DataManager
+    \item Database
+    \item ExternalProxy
+\end{enumerate}
+     & 
+\begin{enumerate}[label={\color{titleColor}[E\arabic*]}]
+    \item WeatherService
+    \item MapService
+\end{enumerate}
+\end{tabular}
+
+\newpage
+
+% R1
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R1]} & \textbf{The platform shall allow new users to register an account by providing personal information.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C3] & AccountManager \\ \hline
+    [C4] & RegistrationManager \\ \hline
+    [C15] & DataManager\\ \hline
+    [C16] & Database\\ \hline
+    \end{tabular}
+    \caption{Requirement R1 - Traceability}
+    \label{tab:RT1}
+\end{table}
+
+% R2
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R2]} & \textbf{The platform shall allow registered users to login by entering their registered email and password.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C3] & AccountManager \\ \hline
+    [C5] & AuthManager \\ \hline
+    [C15] & DataManager\\ \hline
+    [C16] & Database\\ \hline
+    \end{tabular}
+    \caption{Requirement R2 - Traceability}
+    \label{tab:RT2}
+\end{table}
+
+% R3
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R3]} & \textbf{The platform shall display an interactive map centered on the user’s current location.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C9] & PublishedPathManager \\ \hline
+    [C10] & PathSearchManager \\ \hline
+    [C11] & TripManager \\ \hline
+    [C13] & NavigationManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R3 - Traceability}
+    \label{tab:RT3}
+\end{table}
+
+% R4
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R4]} & \textbf{The platform shall allow users to input an "Origin" and "Destination" of the desired path.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C10] & PathSearchManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R4 - Traceability}
+    \label{tab:RT4}
+\end{table}
+
+% R5
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R5]} & \textbf{The platform shall allow users to swap the origin and destination inputs.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C10] & PathSearchManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R5- Traceability}
+    \label{tab:RT5}
+\end{table}
+
+% R6
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R6]} & \textbf{The platform shall calculate and display the top 5 paths options ranked by score.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C10] & PathSearchManager \\ \hline
+    [C15] & DataManager\\ \hline
+    [C16] & Database\\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R6 - Traceability}
+    \label{tab:RT6}
+\end{table}
+
+% R7
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R7]} & \textbf{The platform shall visualize the geometry, obstacles and scores of the top 5 paths on the map.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C10] & PathSearchManager \\ \hline
+    [C15] & DataManager\\ \hline
+    [C16] & Database\\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R7 - Traceability}
+    \label{tab:RT7}
+\end{table}
+
+% R8
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R8]} & \textbf{When the origin coincides with the current location, the platform shall allow users to start the navigation mode for the currently selected path.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C10] & PathSearchManager \\ \hline
+    [C11] & TripManager \\ \hline
+    [C13] & NavigationManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R8 - Traceability}
+    \label{tab:RT8}
+\end{table}
+
+% R9
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R9]} & \textbf{When the navigation is started, the platform shall visualize the user’s position in real-time.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C11] & TripManager \\ \hline
+    [C13] & NavigationManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R9 - Traceability}
+    \label{tab:RT9}
+\end{table}
+
+% R10
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R10]} & \textbf{When the navigation is started, the platform shall display a dynamic navigation overlay providing the name of the street being traversed and the estimated speed.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C11] & TripManager \\ \hline
+    [C13] & NavigationManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R10 - Traceability}
+    \label{tab:RT10}
+\end{table}
+
+% R11
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R11]} & \textbf{The platform shall allow users to interrupt the active navigation mode at any time.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C11] & TripManager \\ \hline
+    [C13] & NavigationManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R11 - Traceability}
+    \label{tab:RT11}
+\end{table}
+
+% R12
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R12]} & \textbf{When the navigation is completed, the platform shall present to registered users a summary screen
+    containing statistics and the map of the path taken.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C11] & TripManager \\ \hline
+    [C12] & HistoryManager \\ \hline
+    [C13] & NavigationManager \\ \hline
+    [C17] & ExternalProxy \\ \hline
+    [E1] & WeatherService \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R12 - Traceability}
+    \label{tab:RT12}
+\end{table}
+
+% R13
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R13]} & \textbf{When the navigation is completed, the platform shall allow registered users to modify the path
+    status and the obstacles.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C11] & TripManager \\ \hline
+    [C12] & HistoryManager \\ \hline
+    [C13] & NavigationManager \\ \hline
+    [C14] & ReportManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R13 - Traceability}
+    \label{tab:RT13}
+\end{table}
+
+% R14
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R14]} & \textbf{The platform shall allow registered users to start an active recording session.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C8] & AutomatedModeManager \\ \hline
+    [C10] & PathSearchManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R14 - Traceability}
+    \label{tab:RT14}
+\end{table}
+
+% R15
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R15]} & \textbf{The platform shall utilize device sensors to automatically detect obstacles} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C8] & AutomatedModeManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R15 - Traceability}
+    \label{tab:RT15}
+\end{table}
+
+% R16
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R16]} & \textbf{The platform shall display real-time metrics during the trip, including duration, current speed and
+    distance traveled} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C8] & AutomatedModeManager \\ \hline
+    [C11] & TripManager \\ \hline
+    [C13] & NavigationManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R16 - Traceability}
+    \label{tab:RT16}
+\end{table}
+
+% R17
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R17]} & \textbf{The platform shall allow registered users to stop the recording and immediately transition to the summary screen to review the captured data.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C8] & AutomatedModeManager \\ \hline
+    [C11] & TripManager \\ \hline
+    [C12] & HistoryManager \\ \hline
+    [C17] & ExternalProxy \\ \hline
+    [E1] & WeatherService \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R17 - Traceability}
+    \label{tab:RT17}
+\end{table}
+
+% R18
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R18]} & \textbf{The platform shall allow registered users to modify status and obstacles in the captured data
+    summary} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C8] & AutomatedModeManager \\ \hline
+    [C11] & TripManager \\ \hline
+    [C12] & HistoryManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R18 - Traceability}
+    \label{tab:RT18}
+\end{table}
+
+% R19
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R19]} & \textbf{The platform shall allow registered users to publish the captured path along with its data.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C8] & AutomatedModeManager \\ \hline
+    [C11] & TripManager \\ \hline
+    [C12] & HistoryManager \\ \hline
+    [C15] & DataManager\\ \hline
+    [C16] & Database\\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R19 - Traceability}
+    \label{tab:RT19}
+\end{table}
+
+% R20
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R20]} & \textbf{The platform shall allow registered users to manually draw the path on the map.} \\ \hline
+    [C1] & ClientApplication\\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C9] & PublishedPathManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R20 - Traceability}
+    \label{tab:RT20}
+\end{table}
+
+% R21
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R21]} & \textbf{The platform shall allow registered users to manually place obstacle markers along the drawn
+    path.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C9] & PublishedPathManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R21 - Traceability}
+    \label{tab:RT21}
+\end{table}
+
+% R22
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R22]} & \textbf{The platform shall allow registered users to set the status of the drawn path.} \\ \hline
+    [C1] & MobileApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C9] & PublishedPathManager \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R22 - Traceability}
+    \label{tab:RT22}
+\end{table}
+
+% R23
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R23]} & \textbf{The platform shall allow registered users to publish the drawn path along with its data.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C9] & PublishedPathManager \\ \hline
+    [C15] & DataManager\\ \hline
+    [C16] & Database\\ \hline
+    [C17] & ExternalProxy \\ \hline
+    [E1] & WeatherService \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R23 - Traceability}
+    \label{tab:RT23}
+\end{table}
+
+% R24
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R24]} & \textbf{The platform shall display a dashboard listing the user’s historical trips and their data, sorted
+    chronologically.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C11] & TripManager \\ \hline
+    [C12] & HistoryManager \\ \hline
+    [C15] & DataManager\\ \hline
+    [C16] & Database\\ \hline
+    [C17] & ExternalProxy \\ \hline
+    [E1] & WeatherService \\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R24 - Traceability}
+    \label{tab:RT24}
+\end{table}
+
+% R25
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R25]} & \textbf{The platform shall allow registered users to view a list of paths published by them.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C9] & PublishedPathManager \\ \hline
+    [C15] & DataManager\\ \hline
+    [C16] & Database\\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R25 - Traceability}
+    \label{tab:RT25}
+\end{table}
+
+% R26
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R26]} & \textbf{The platform shall allow registered users to delete any of their published paths.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C7] & PathManager \\ \hline
+    [C9] & PublishedPathManager \\ \hline
+    [C15] & DataManager\\ \hline
+    [C16] & Database\\ \hline
+    [E2] & MapService \\ \hline
+    \end{tabular}
+    \caption{Requirement R26 - Traceability}
+    \label{tab:RT26}
+\end{table}
+
+% R27
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{1cm}|p{14cm}|}
+    \hline
+    \textbf{[R27]} & \textbf{The platform shall display a user profile screen summarizing the main aggregate statistics.} \\ \hline
+    [C1] & ClientApplication \\ \hline
+    [C2] & WebServer \\ \hline
+    [C6] & ProfileManager \\ \hline
+    \end{tabular}
+    \caption{Requirement R27 - Traceability}
+    \label{tab:RT27}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline &   
+        \textbf{C1}   &
+        \textbf{C2}   &
+        \textbf{C3}   &
+        \textbf{C4}   &
+        \textbf{C5}   &
+        \textbf{C6}   &
+        \textbf{C7}   &
+        \textbf{C8}   &
+        \textbf{C9}   &  
+        \textbf{C10}  &   
+        \textbf{C11}  &  
+        \textbf{C12}  & 
+        \textbf{C13}  & 
+        \textbf{C14}  &
+        \textbf{C15}  &
+        \textbf{C16}  &
+        \textbf{C17}  &
+        \textbf{E1}   &
+        \textbf{E2} \\ \hline
+        %                C1  C2  C3  C4  C5  C6  C7  C8  C9 C10 C11 C12 C13 C14 C15 C16 C17  E1  E2
+        \textbf{R1}   & X & X & X & X &   &   &   &   &   &   &   &   &   &   & X & X &   &   &   \\ \hline
+        \textbf{R2}   & X & X & X &   & X &   &   &   &   &   &   &   &   &   & X & X &   &   &   \\ \hline
+        \textbf{R3}   & X & X &   &   &   &   & X &   & X & X & X &   & X &   &   &   &   &   & X \\ \hline
+        \textbf{R4}   & X & X &   &   &   &   & X &   &   & X &   &   &   &   &   &   &   &   & X \\ \hline
+        \textbf{R5}   & X & X &   &   &   &   & X &   &   & X &   &   &   &   &   &   &   &   & X \\ \hline
+        \textbf{R6}   & X & X &   &   &   &   & X &   &   & X &   &   &   &   & X & X &   &   & X\\ \hline
+        \textbf{R7}   & X & X &   &   &   &   & X &   &   & X &   &   &   &   & X & X &   &   & X \\ \hline
+        \textbf{R8}   & X & X &   &   &   &   & X &   &   & X & X &   & X &   &   &   &   &   & X \\ \hline
+        \textbf{R9}   & X & X &   &   &   &   &   &   &   &   & X &   & X &   &   &   &   &   & X \\ \hline
+        \textbf{R10} & X & X &   &   &   &   &   &   &   &   & X &   & X &   &   &   &   &   & X \\ \hline
+        \textbf{R11} & X & X &   &   &   &   &   &   &   &   & X &   & X &   &   &   &   &   & X \\ \hline
+        \textbf{R12} & X & X &   &   &   &   &   &   &   &   & X & X & X &   &   &   & X & X & X \\ \hline
+        \textbf{R13} & X & X &   &   &   &   &   &   &   &   & X & X & X & X &   &   &   &   & X \\ \hline
+        \textbf{R14} & X & X &   &   &   &   & X & X &   & X &   &   &   &   &   &   &   &   & X \\ \hline
+        \textbf{R15} & X & X &   &   &   &   & X & X &   &   &   &   &   &   &   &   &   &   & X \\ \hline
+        \textbf{R16} & X & X &   &   &   &   & X & X &   &   & X &   & X &   &   &   &   &   & X \\ \hline
+        \textbf{R17} & X & X &   &   &   &   & X & X &   &   & X & X &   &   &   &   & X & X & X \\ \hline
+        \textbf{R18} & X & X &   &   &   &   & X & X &   &   & X & X &   &   &   &   &   &   & X \\ \hline
+        \textbf{R19} & X & X &   &   &   &   & X & X &   &   & X & X &   &   & X & X &   &   & X \\ \hline
+        \textbf{R20} & X & X &   &   &   &   & X &   & X &   &   &   &   &   &   &   &   &   & X \\ \hline
+        \textbf{R21} & X & X &   &   &   &   & X &   & X &   &   &   &   &   &   &   &   &   & X \\ \hline
+        \textbf{R22} & X & X &   &   &   &   & X &   & X &   &   &   &   &   &   &   &   &   & X \\ \hline
+        \textbf{R23} & X & X &   &   &   &   & X &   & X &   &   &   &   &   & X & X & X & X & X \\ \hline
+        \textbf{R24} & X & X &   &   &   &   &   &   &   &   & X & X &   &   & X & X & X & X & X \\ \hline
+        \textbf{R25} & X & X &   &   &   &   & X &   & X &   &   &   &   &   & X & X &   &   & X  \\ \hline
+        \textbf{R26} & X & X &   &   &   &   & X &   & X &   &   &   &   &   & X & X &   &   & X \\ \hline
+        \textbf{R27} & X & X &   &   &   & X &   &   &   &   &   &   &   &   &   &   &   &   &   \\ \hline
+    \end{tabular}}
+    \caption{Requirements Traceability Matrix}
+    \label{tab:requirements_traceability}
+\end{table}
