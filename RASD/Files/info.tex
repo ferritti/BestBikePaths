@@ -1,0 +1,23 @@
+\noindent
+\begin{tabularx}{\textwidth}{ p{2.5cm} | X } 
+    \hline
+    % Intestazione (Manteniamo l'intestazione centrata per estetica)
+    \multicolumn{1}{c|}{\textbf{Version}} & \textbf{Modification Details} \\ 
+    \hline
+    
+    % Versione 1.0 - Allineato a destra (\raggedleft)
+    \raggedleft \textbf{v1.0} \newline 23-12-2025 & First version. \\ 
+    \hline
+    
+    % Versione 1.1 - Allineato a destra (\raggedleft)
+    \raggedleft \textbf{v1.1} \newline 25-01-2025 & Modifications:
+    \begin{itemize}[leftmargin=*, nosep, after=\vspace{\baselineskip}]
+        \item Added a loop in SD4 enclosing the navigation interaction sequence until the destination is reached;
+        \item Refactored SD5 to start directly with showPage(TripSummary);
+        \item Refactored SD4 to include Weather and Map Services, ensuring consistency with corresponding Use Cases;
+        \item Removed `modify obstacle' from SD5 and UC5, as the summary already includes the mini-map;
+        \item Removed the loop in SD6, as all user trips are retrieved from the database at once instead of iteratively.
+        
+    \end{itemize} \\ 
+    \hline
+\end{tabularx}

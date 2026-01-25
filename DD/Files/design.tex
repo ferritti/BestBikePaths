@@ -235,7 +235,7 @@ At the end of the trip, he client requests the weather from the weather service 
     \label{fig:placeholder}
 \end{figure}
 \\
-This sequence diagram illustrates the Save Trip workflow. The process initiates with the user sets path status via the interface. An optional sequence, structured as a loop, allows the user to iteratively modify obstacle presence directly on the interface. The core persistence phase is triggered when the user saves the trip and report. The WebServer forwards this combined data to the HistoryManager, which coordinates the operation. First, it directly persists the trip data via the DataManager. Then, it delegates the report details to the ReportManager, which saves the report in the database via the DataManager. Finally, the HistoryManager interacts with the ProfileManager to calculate and update the user's average performance statistics. Upon the successful completion of this chain of operations, the success response propagates back through the system, and the user is redirected to the homepage.
+This sequence diagram illustrates the Save Trip workflow. The process could initiate with the user changes path status via the interface. An optional sequence, structured as a loop, allows the user to iteratively modify obstacle presence directly on the interface. The core persistence phase is triggered when the user saves the trip and report. The WebServer forwards this combined data to the HistoryManager, which coordinates the operation. First, it directly persists the trip data via the DataManager. Then, it delegates the report details to the ReportManager, which saves the report in the database via the DataManager. Finally, the HistoryManager interacts with the ProfileManager to calculate and update the user's average performance statistics. Upon the successful completion of this chain of operations, the success response propagates back through the system, and the user is redirected to the homepage.
 
 \newpage
 \noindent
@@ -294,10 +294,10 @@ This sequence diagram illustrates the process of deleting a path initiated by a 
 \end{figure}
 
 \noindent
-This sequence diagram describes the process of manually creating and publishing a cycling path. The User starts the procedure by activating the manual mode and defining the starting point; subsequently, for each new coordinate entered, the ClientApplication sends a request to the MapService to obtain the precise path geometry. Once the dense list of coordinates is received, the ClientApplication updates the path visualization on the map, following the layout of the streets. During this phase, the User can add or modify obstacles along the path, receiving immediate visual feedback from the application. Once the drawing is completed, the User requests the publication of the path, forwarding the data through the WebServer and the PublishedPathManager to the DataManager, which queries the Database for persistence.
+This sequence diagram illustrates the manual path creation workflow. The user draws the path on the ClientApplication, which iteratively queries the external MapService to retrieve path geometry and street names. Distinctly, the obstacle tagging process is handled locally by the interface: the user can modify obstacles receiving immediate visual updates without triggering external service calls. Once finalized, the publication request is propagated through the WebServer and PublishedPathManager to the DataManager for persistence. The outcome is handled in an alternative block:
 \begin{itemize}
-    \item If the path is successfully registered, the Database returns a success message that propagates back through the various layers to the ClientApplication, which displays a publication confirmation to the user.
-    \item If the path already exists in the system or an error occurs, the Database returns a negative response which, once notified to the ClientApplication, is displayed to the user as an error message or as a path-already-exists notification.
+    \item \textbf{Success:} The path is unique; the Database confirms insertion, and a success signal propagates back to notify the user.
+    \item \textbf{Failure:} A duplicate path or error triggers a negative response, which is displayed to the user as an error message.
 \end{itemize}
 
 

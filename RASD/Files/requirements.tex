@@ -38,7 +38,7 @@ From the \emph{Search path screen}, when the cyclist clicks “Start Navigation�
 \newpage
 \noindent
 \textbf{Manual Mode} \newline
-From the \emph{Home page}, when the user clicks the \emph{Manual Mode button}, the \emph{Draw Path screen} appears. Here, the user can draw a path by clicking on the map to add points, which the Map Service then connects to create a path that follows the street layout. By clicking “Obstacles”, the \emph{Insert Obstacles screen} appears, allowing the user to place obstacles directly on the map. Finally, clicking “Next Step” opens the \emph{Review \& Publish screen}, where the user sets the status and publishes the path by clicking “Publish Path”.
+From the \emph{Home page}, when the user clicks the \emph{Manual Mode button}, the \emph{Draw Path screen} appears. Here, the user can draw a path by clicking on the map to add points, which the press() then connects to create a path that follows the street layout. By clicking “Obstacles”, the \emph{Insert Obstacles screen} appears, allowing the user to place obstacles directly on the map. Finally, clicking “Next Step” opens the \emph{Review \& Publish screen}, where the user sets the status and publishes the path by clicking “Publish Path”.
 \begin{figure}[h!]
     \centering
     \subfloat[Draw path screen]{\includegraphics[width=0.33\textwidth]{RASD/Images/Mockup/DrawPath.png}}\hfill
@@ -110,7 +110,7 @@ the \emph{Recent trips screen} lists all the trips made by the user, sorted by d
 \begin{description}
     \item[\textbf{[R14]}] The platform shall allow registered users to start an active recording session.
     \item[\textbf{[R15]}] The platform shall utilize device sensors to automatically detect obstacles.
-    \item[\textbf{[R16]}] The platform shall display real-time metrics during the trip, including duration, current speed, distance traveled, and weather conditions.
+    \item[\textbf{[R16]}] The platform shall display real-time metrics during the trip, including duration, current speed and distance traveled.
 
     \item[\textbf{[R17]}] The platform shall allow registered users to stop the recording and immediately transition to the summary screen to review the captured data.
 
@@ -162,7 +162,7 @@ This Use Case Diagram depicts the system’s functionalities organized through a
 \end{itemize}
 
 \noindent
-Finally, the diagram illustrates the participation of external services (Map and Weather Services) in supporting these functionalities.
+Finally, the diagram illustrates the need for device sensors and the participation of external services (Map and Weather Services) in supporting these functionalities.
 \newpage
 \begin{figure}[H]
     \centering
@@ -172,7 +172,7 @@ Finally, the diagram illustrates the participation of external services (Map and
 \end{figure}
 
 \noindent
-This diagram illustrates the manual path creation process centered on the 'Publish Path' use case. This main activity mandatorily includes both 'Draw Path' (to define the path geometry) and 'Add Status' (to assign a rating). Additionally, the process can be optionally extended by 'Add Obstacle' to allow the user to report specific issues on the map.
+This diagram illustrates the manual path creation process centered on the 'Publish Path' use case. This main activity mandatorily includes both 'Draw Path' (to define the path geometry) and 'Add Status' (to assign a status). Additionally, the process can be optionally extended by 'Add Obstacle' to allow the user to report specific issues on the map.
 
 \vspace{15mm}
 
@@ -207,7 +207,6 @@ This diagram illustrates the automated path acquisition process. The Device Sens
       \item The Guest presses the "Sign up" button.
       \item The platform validates the entered information.
       \item The platform sends a confirmation email to the provided email address.
-      \item The platform shows a message to the guest to confirm the registration.
       \item The Guest confirms the registration by clicking on the link in the email. 
       \item The platform confirms the registration and activates the account.
       \item The Guest is redirected to the login screen.
@@ -243,7 +242,7 @@ This diagram illustrates the automated path acquisition process. The Device Sens
       \item The Guest clicks the "Login" button.
       \item The platform verifies login credentials.
       \item The platform creates a login session for the guest.
-      \item The Guest is redirected to the platform’s homepage as a logged-in User.
+      \item The Guest is redirected to the platform’s profile page as a logged-in User.
     \end{enumerate}
     \\ \hline
     Exit Condition & The Guest is successfully authenticated as a User.\\ \hline
@@ -264,14 +263,12 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{tabularx}{\textwidth}{|>{\bfseries}l|X|}
     \hline
     UC-03 & Search Path \\ \hline
-    Actors & Cyclist, Map Service, Device Sensors\\ \hline
-    Entry Condition & The Cyclist is viewing the platform’s homepage\\ \hline
+    Actors & Cyclist, Device Sensors\\ \hline
+    Entry Condition & The Cyclist is viewing the platform’s homepage and the map is loaded\\ \hline
     Event Flow & 
     \begin{enumerate}
-      \item The platform loads the visual map from the Map Service.
-      \item The gps of the Device Sensors enters the current position in the origin.
       \item The Cyclist enters the destination.
-      \item The platform retrieves the locations using the Map Service.
+      \item The gps of the Device Sensors enters the current position in the origin.
       \item The platform identifies the best 5 paths among those published.
       \item The platform displays the best 5 paths on the map.
       \item The Cyclist selects the desired path.
@@ -280,10 +277,10 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     Exit Condition &  The desired path is selected and the option to view its details is available to the Cyclist.\\ \hline
     Exception & 
     \begin{itemize}
-        \item None.
+        \item No paths found.
     \end{itemize}
     \\ \hline
-    \end{tabularx}
+        \end{tabularx}
     \caption{[UC-03]: Search Path Use Case }
     \label{UC-03}
 \end{table} 
@@ -295,19 +292,22 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{tabularx}{\textwidth}{|>{\bfseries}l|X|}
     \hline
     UC-04 & Start Navigation \\ \hline
-    Actors & Cyclist, Device Sensors\\ \hline
+    Actors & Cyclist, press(), Weather Service, Device Sensors\\ \hline
     Entry Condition & The Cyclist has selected the desired path and the origin is the current location\\ \hline
     Event Flow & 
     \begin{enumerate}
       \item The platform shows the "Start Navigation" button.
       \item The Cyclist clicks "Start Navigation".
       \item The platform displays the selected path on the map.
-      \item The Cyclist current postion is updated by GPS.
-      \item The platform guides the Cyclist in real-time.
-      \item The platform detects that the Cyclist has reached the destination.
+      \item The Cyclist current position is updated by the platform using the GPS of the Device Sensors.
+      \item The press() provides the current street name.
+      \item The platform displays the cyclist current speed.
+      \item The platform detects, through the GPS, that the Cyclist has reached the destination.
+      \item The platform requests weather information related to the trip from the Weather Service
+      \item The platform asks the press() instructions for drawing the path on the map following the streets
     \end{enumerate}
     \\ \hline
-    Exit Condition &  The platform displays the trip summary.\\ \hline
+    Exit Condition &  The platform displays the trip completed page.\\ \hline
     Exception & 
     \begin{itemize}
         \item The user deviates from the active path for more than 15 seconds.
@@ -326,23 +326,21 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{tabularx}{\textwidth}{|>{\bfseries}l|X|}
     \hline
     UC-05 & Save Trip \\ \hline
-    Actors & User, Weather Service, Map Service\\ \hline
+    Actors & User\\ \hline
     Entry Condition & The user is logged in and the navigation is completed.\\ \hline
     Event Flow & 
     \begin{enumerate}
-      \item The platform retrieves weather data from the Weather Service.
       \item The platform displays the "Trip Completed" screen with statistics, weather info, and rating options. 
       \item The User selects the path status.
-      \item The User clicks "Modify Obstacles" to report obstacles on the map thanks to the Map Service.
+      \item The User modify the obstacles on the map.
       \item The User clicks "Save Trip".
       \item The platform saves the trip in the User's "Recent Trips" list.
       \item The platform automatically submits the path report to the system.
-      \item The platform aggregates the report with others received for the same path within the current timeframe.
-      \item The platform applies the merging logic to determine the consensus Path Status and update the Active Obstacles.
-      \item The User is redirected to the "Recent Trips" screen.
+      \item The platform automatically update average performance metrics.
+      \item The User is redirected to the "Home Page" screen.
     \end{enumerate}
     \\ \hline
-    Exit Condition & The trip is saved and the "Recent Trips" screen is displayed to the User.\\ \hline
+    Exit Condition & The trip is saved and the "Home Page" screen is displayed to the User.\\ \hline
     Exception & 
     \begin{itemize}
         \item None.
@@ -361,12 +359,11 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{tabularx}{\textwidth}{|>{\bfseries}l|X|}
     \hline
     UC-06 & View Trips \\ \hline
-    Actors & User, Map Service\\ \hline
+    Actors & User\\ \hline
     Entry Condition & The User is logged in.\\ \hline
     Event Flow & 
     \begin{enumerate}
       \item The User opens the "Recent Trips" screen.
-      \item The Map Service provides the map preview of all trips.
       \item The platform displays the list of saved trips.
       \item The User views the details of the trips in the list.
     \end{enumerate}
@@ -394,7 +391,8 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     Event Flow & 
     \begin{enumerate}
       \item The User opens the "Profile" screen.
-      \item The User clicks on "Edit Profile".
+      \item The User opens the "Settings"
+      \item The User clicks "Edit Profile".
       \item The User modifies the information.
       \item The User clicks "Confirm Changes"
       \item The platform validates the new data.
@@ -450,7 +448,7 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{tabularx}{\textwidth}{|>{\bfseries}l|X|}
     \hline
     UC-09 & Publish Path\\ \hline
-    Actors & User\\ \hline
+    Actors & User, Map Service\\ \hline
     Entry Condition & The User is logged in and is viewing the homepage.\\ \hline
     Event Flow & 
     \begin{enumerate}
@@ -458,6 +456,7 @@ This diagram illustrates the automated path acquisition process. The Device Sens
       \item The platform loads the "Draw Mode" interface.
       \item The User draw the path.
       \item The User clicks the "Next Step" button.
+      \item The platform asks to Map Service to get the name of streets.
       \item The platform displays the "Review \& Publish" screen.
       \item The User selects the status.
       \item The User clicks "Publish Path".
@@ -488,8 +487,8 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{enumerate}
       \item The User taps on the map to place the starting point.
       \item The User continues tapping to trace the path segments.
-      \item The Map Service renders the route line in real-time.
-      \item The platform shows the "Total Km" provided by the Map Service.
+      \item The Map Service renders the path line in real-time.
+      \item The platform shows the "Total Km".
       \item The User completes the tracing.
     \end{enumerate}
     \\ \hline
@@ -511,14 +510,14 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{tabularx}{\textwidth}{|>{\bfseries}l|X|}
     \hline
     UC-11 & Add Obstacle \\ \hline
-    Actors & User, Map Service\\ \hline
+    Actors & User\\ \hline
     Entry Condition & The User is in the manual creation interface, the interactive map is loaded, and the path is partially or fully drawn.\\ \hline
     Event Flow & 
     \begin{enumerate}
       \item The User clicks on the "Obstacles" tab.
       \item The platform switches to "Obstacle Mode".
       \item The User taps a specific point along the drawn path.
-      \item The platform places an obstacle marker on the coordinate using the Map Service.
+      \item The platform places an obstacle marker on the coordinate.
     \end{enumerate}
     \\ \hline
     Exit Condition & An obstacle is flagged on the map.\\ \hline
@@ -544,12 +543,11 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     Event Flow & 
     \begin{enumerate}
       \item The User clicks the "Lightning" button to start the acquisition.
-      \item The platform initializes the "Automated Mode" interface.
-      \item The platform loads the User's current location on the map using the gps from the Device Sensors.
       \item The platform starts the timer.
+      \item The platform initializes the "Automated Mode" interface.
       \item The platform begins recording distance, speed and obstacles in real-time using the Device Sensors.
       \item The platform continuously updates the metrics (distance, obstacles, speed).
-      \item The User clicks the "Stop" button.
+      \item The User stops the path aquisition by clicking the "Stop button".
     \end{enumerate}
     \\ \hline
     Exit Condition & The "Automated Mode" is stopped and the User is viewing the "Trip Summary".\\ \hline
@@ -570,19 +568,19 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{tabularx}{\textwidth}{|>{\bfseries}l|X|}
     \hline
     UC-13& Stop Path Acquisition \\ \hline
-    Actors & User, Map Service, Device Sensors\\ \hline
+    Actors & User, Map Service, Weather Service\\ \hline
     Entry Condition & The User is logged in and the "Automated Mode" is active.\\ \hline
     Event Flow & 
     \begin{enumerate}
-      \item The User clicks the "Stop" button.
+      \item The User stops the path aquisition by clicking the "Stop button".
       \item The platform stops the timer.
-      \item The platform suspsend interaction with all Device Sensor.
-      \item The platform processes the recorded data to calculate final metrics.
-      \item The platform extracts the street names using the Map Service.
+      \item The platform requests weather information related to the trip from the Weather Service.
+      \item The platform asks the Map Service instructions for drawing the path on the map following the streets.
+      \item The platform asks to Map Service to get the name of the streets.
       \item The platform displays the "Trip Summary" interface.
     \end{enumerate}
     \\ \hline
-    Exit Condition &  The "Automated Mode" is stopped and the User is viewing the "Trip Summary"\\ \hline
+    Exit Condition & The User is viewing the "Trip Summary"\\ \hline
     Exception & 
     \begin{itemize}
         \item None
@@ -606,7 +604,7 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{enumerate}
       \item The User clicks the "Publish Path" button.
       \item The platform stores the path data (geometry, status, obstacles) in the system.
-      \item The platform validates and makes the path available to the community..
+      \item The platform validates and makes the path available to the community.
     \end{enumerate}
     \\ \hline
     Exit Condition &  The path is published and appears in the User’s "Published Paths" screen.\\ \hline
@@ -630,33 +628,45 @@ The functions used in the sequence diagrams follow these conventional meanings:
     \item \textbf{showPage(Page)}: Displays the content of a specific Page.
     \item \textbf{showError(Error)}: Displays an error message indicating an issue that occurred.
     \item \textbf{check()}: Verifies the validity of the information provided by the user.
+    \item \textbf{send(ConfirmationEmail)}: The system sends a confirmation email to user.
+    \item \textbf{confirmEmail()}: The user confirms the email, which triggers a confirmation signal to the system.
+    \item \textbf{register(User)}: The system registers the user.
     \item \textbf{update(Data)}: Refers to internal processes that update database records with Data.
-    \item \textbf{destinationReached()}: The device sensors send a signal to notify the system that the user has reached the destination.
-    \item \textbf{initGPS()}: Sends a command to power up the Global Positioning System module and acquire a satellite lock for location tracking.
-    \item \textbf{initAccelerometer()}: Activates the device's accelerometer to begin measuring linear acceleration forces.
-    \item \textbf{initGyroscope()}: Activates the gyroscope sensor to measure orientation and angular velocity.
-    \item \textbf{ACK()}: A generic signal returned by a hardware component or system module to confirm that a command was received and executed successfully.
-    \item \textbf{getMapData()}: Represents the system requesting the visual map components from the external service.
-    \item \textbf{mapTiles(Tiles)}: Delivers the graphical data required to render the map interface on the screen.
-    \item \textbf{enter(Location)}: Represents the action of a user inputting a starting point or destination address.
+    \item \textbf{enter()}: Represents the action of a user entering an input.
+    \item \textbf{getCurrentPosition()}: The system retrieves user's current position through Device Sensors.
+    \item \textbf{currentPosition()}: The Device Sensors send user's current postion to the system.
     \item \textbf{findBestPaths(Origin, Destination)}: Identifies and returns the 5 paths with the best performance scores connecting the selected locations.
     \item \textbf{selectPath(Path)}: Represents the user choosing one of the displayed paths to view its details or start navigation.
-    \item \textbf{currentPosition()}: Commands the device sensors (GPS) to begin sending real-time location updates.
-    \item \textbf{stopTracking()}: Commands the device sensors to cease location updates
-    \item \textbf{getWeather(CurrentLocation)}: Requests meteorological data (temperature, conditions) for the specific coordinates where the trip ended.
-    \item \textbf{wetherData()}: Retrieves the requested weather information from the external service. It returns the weather metrics if found, or a null/empty value if the data is unavailable, ensuring the process continues without handling an exception.
+    \item \textbf{getWeatherInfo()}: Requests meteorological data (temperature, conditions) for the specific trip.
+    \item \textbf{weatherInfo()}: Retrieves the requested weather information from the external service. It returns the weather metrics if found, or a null/empty value if the data is unavailable, ensuring the process continues without handling an exception.
     \item \textbf{insert(Object)}: Represents the user placing a marker on the map.
-    \item \textbf{displayInstruction()}: Updates the user interface with visual navigation cues and the current position on the map.
-    \item \textbf{fetchData(Criteria)}: A generic system request to retrieve specific datasets from the database required to populate or plot elements on the user interface.
-    \item \textbf{showMessage(Argument)}: Shows a general message on the screen.
-    \item \textbf{monitorRoadConditions()}:Processes live sensor data to understand the path environment.
+    \item \textbf{drawMarkerOnMap()}: The system draws a marker on the coordinate where the user clicked.
+    \item \textbf{displayCursorOnMap()}: The system displays a cursor in the user's current position.
+    \item \textbf{displayCurrentStreet()}: The system displays the current street name during navigation.
+    \item \textbf{checkCyclistPosition(path, currentPosition)}: The system check that the user is following the path selected for the navigation.
+    \item \textbf{calculateMetrics()}: The system calculate the metrics during the navigation.
+    \item \textbf{mostFrequentWeather()}: The system computes the most frequent weather in the trip area.
+    \item \textbf{delete()}: The system deletes a published path.
+    \item \textbf{drawPath()}: The system draws a path on the map.
+    \item \textbf{drawPathOnMap()}: The system draws a path on map.
+    \item \textbf{getPathGeometry()}: The system retrieves path coordinates.
+    \item \textbf{pathCoordinates()}: The map service returns path coordinates.
+    \item \textbf{showStatusUpdated()}: The system shows the updated status.
+    \item \textbf{modify(obstacle)}: The user modify an obstacle.
+    \item \textbf{save()}: The system saves data on the database.
+    \item \textbf{obstaclesAdded()}: The system add the obstacles.
+    \item \textbf{getSensorsData()}: The system retrieves sensors data.
+    \item \textbf{sensorsData()}: The device sensors return sensor data.
+    \item \textbf{getStreetNames()}: The system retrieves the street names of a path.
+    \item \textbf{streetNames()}:  The map service return the street names of a path.
+    \item \textbf{DisplayInfoAndTimer()}: The system displays info and timer of the trip.
+        \item \textbf{checkObstacle(acc,giros)}: The system check the obstacles on the path during the automated mode.
+    \item \textbf{fetchData()}: A generic system request to retrieve specific data from the database.
+    \item \textbf{showMessage()}: Shows a general message on the screen.
     \item \textbf{startTimer()}: Internal process that starts the timer.
     \item \textbf{stopTimer()}: Internal process that stops the timer.
-    \item \textbf{suspendTimer()}: Internal process that pauses temporarily the timer.
-    \item \textbf{suspendAllDeviceSensor()}: Suspend interaction with all device sensor.
     \item \textbf{pathDeviated()}: Device detects that user is deviating from active path.
-
-    \item \textbf{mergePathReport()}: Aggregates recent reports received for the same path and applies merging logic to determine the consensus Path Status and Active Obstacles.
+    
 \end{itemize}
 \newpage
 \vspace{2mm}
@@ -750,7 +760,7 @@ The functions used in the sequence diagrams follow these conventional meanings:
 \vspace{2mm}
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=1\linewidth]{RASD/Images/SequenceDiagram/PublishPath.png}
+    \includegraphics[width=0.8\linewidth]{RASD/Images/SequenceDiagram/PublishPath.png}
     \caption{[SD9]: Publish Path Sequence Diagram}
     \label{fig:placeholder}
 \end{figure}
@@ -849,8 +859,8 @@ The functions used in the sequence diagrams follow these conventional meanings:
         {[R10]} & When the navigation is started, the platform shall display a dynamic navigation overlay providing the name of the street being traversed and the estimated speed.\\
         {[R12]} & When the navigation is completed, the platform shall present to registered users a summary screen containing statistics and the map of the path taken. \\
         {[R14]} & The platform shall allow registered users to start an active recording session. \\
-        {[R16]} & The platform shall display real-time metrics during the trip, including duration, current speed,
-        distance traveled, and weather conditions. \\
+        {[R16]} & The platform shall display real-time metrics during the trip, including duration, current speed and
+distance traveled.\\
         {[R17]} & The platform shall allow registered users to stop the recording and immediately transition to the
         summary screen to review the captured data. \\
         {[R24]} & The platform shall display a dashboard listing the user’s historical trips and their data, sorted
@@ -880,7 +890,7 @@ The functions used in the sequence diagrams follow these conventional meanings:
         {[D1]} & The user’s device is equipped with a GPS, an accelerometer and a gyroscope. \\
         {[D2]} & The user has a working internet connection. \\
         {[D5]} & The external weather information service is reliable. \\
-        {[D6]} & The external map service is available and provides accurate topographical data.\\
+        {[D6]} & The external press() is available and provides accurate topographical data.\\
         & \\
         \hline
         & \\[-1em]
@@ -891,8 +901,8 @@ The functions used in the sequence diagrams follow these conventional meanings:
         {[R9]} & When the navigation is started, the platform shall visualize the user's position in real-time.\\
         {[R10]} & When the navigation is started, the platform shall display a dynamic navigation overlay providing the name of the street being traversed and the estimated speed. \\
         {[R12]} & When the navigation is completed, the platform shall present to registered users a summary screen containing statistics and the map of the path taken. \\
-        {[R16]} & The platform shall display real-time metrics during the trip, including duration, current speed,
-        distance traveled, and weather conditions. \\
+        {[R16]} & The platform shall display real-time metrics during the trip, including duration, current speed and
+distance traveled. \\
         {[R17]} & The platform shall allow registered users to stop the recording and immediately transition to the summary screen to review the captured data. \\
         {[R24]} & The platform shall display a dashboard listing the user’s historical trips and their data, sorted chronologically.\\
         {[R27]} & The platform shall display a user profile screen summarizing the main aggregate statistics. \\
@@ -931,7 +941,8 @@ The functions used in the sequence diagrams follow these conventional meanings:
         % Requirements
         {[R1]} & The platform shall allow new users to register an account by providing personal information. \\
         {[R2]} & The platform shall allow registered users to log in by entering their registered email and password. \\
-        {[R16]} & The platform shall display real-time metrics during the trip, including duration, current speed, distance traveled, and weather conditions. \\
+        {[R16]} & The platform shall display real-time metrics during the trip, including duration, current speed and
+distance traveled. \\
         {[R24]} & The platform shall display a dashboard listing the user’s historical trips and their data, sorted chronologically. \\ % Corretto: rimosso '&' extra
         & \\
         \hline
@@ -959,7 +970,7 @@ The functions used in the sequence diagrams follow these conventional meanings:
         {[D2]} & The user has a working internet connection. \\
         {[D3]} & The user provides truthful information regarding the path to be published. \\
         {[D4]} & The user provides truthful reports regarding paths. \\
-        {[D6]} & The external map service is available and provides accurate topographical data.\\
+        {[D6]} & The external press() is available and provides accurate topographical data.\\
         & \\
         \hline
         & \\[-1em]
@@ -1003,7 +1014,7 @@ The functions used in the sequence diagrams follow these conventional meanings:
         
         {[D1]} &  The user’s device is equipped with a GPS, an accelerometer and a gyroscope. \\
         {[D2]} & The user has a working internet connection. \\
-        {[D6]} & The external map service is available and provides accurate topographical data.\\
+        {[D6]} & The external press() is available and provides accurate topographical data.\\
         & \\
         \hline
         & \\[-1em]
@@ -1044,7 +1055,7 @@ The functions used in the sequence diagrams follow these conventional meanings:
         {[D2]} & The user has a working internet connection. \\
         {[D3]} & The user provides truthful information regarding the path to be published. \\
         {[D4]} & The user provides truthful reports regarding paths. \\
-        {[D6]} & The external map service is available and provides accurate topographical data.\\
+        {[D6]} & The external press() is available and provides accurate topographical data.\\
         & \\
         \hline
         & \\[-1em]
