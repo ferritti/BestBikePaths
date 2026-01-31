@@ -38,7 +38,7 @@ From the \emph{Search path screen}, when the cyclist clicks “Start Navigation�
 \newpage
 \noindent
 \textbf{Manual Mode} \newline
-From the \emph{Home page}, when the user clicks the \emph{Manual Mode button}, the \emph{Draw Path screen} appears. Here, the user can draw a path by clicking on the map to add points, which the press() then connects to create a path that follows the street layout. By clicking “Obstacles”, the \emph{Insert Obstacles screen} appears, allowing the user to place obstacles directly on the map. Finally, clicking “Next Step” opens the \emph{Review \& Publish screen}, where the user sets the status and publishes the path by clicking “Publish Path”.
+From the \emph{Home page}, when the user clicks the \emph{Manual Mode button}, the \emph{Draw Path screen} appears. Here, the user can draw a path by clicking on the map to add points, which the Map Service then connects to create a path that follows the street layout. By clicking “Obstacles”, the \emph{Insert Obstacles screen} appears, allowing the user to place obstacles directly on the map. Finally, clicking “Next Step” opens the \emph{Review \& Publish screen}, where the user sets the status and publishes the path by clicking “Publish Path”.
 \begin{figure}[h!]
     \centering
     \subfloat[Draw path screen]{\includegraphics[width=0.33\textwidth]{RASD/Images/Mockup/DrawPath.png}}\hfill
@@ -292,7 +292,7 @@ This diagram illustrates the automated path acquisition process. The Device Sens
     \begin{tabularx}{\textwidth}{|>{\bfseries}l|X|}
     \hline
     UC-04 & Start Navigation \\ \hline
-    Actors & Cyclist, press(), Weather Service, Device Sensors\\ \hline
+    Actors & Cyclist, Map Service, Weather Service, Device Sensors\\ \hline
     Entry Condition & The Cyclist has selected the desired path and the origin is the current location\\ \hline
     Event Flow & 
     \begin{enumerate}
@@ -300,11 +300,11 @@ This diagram illustrates the automated path acquisition process. The Device Sens
       \item The Cyclist clicks "Start Navigation".
       \item The platform displays the selected path on the map.
       \item The Cyclist current position is updated by the platform using the GPS of the Device Sensors.
-      \item The press() provides the current street name.
+      \item The Map Service provides the current street name.
       \item The platform displays the cyclist current speed.
       \item The platform detects, through the GPS, that the Cyclist has reached the destination.
       \item The platform requests weather information related to the trip from the Weather Service
-      \item The platform asks the press() instructions for drawing the path on the map following the streets
+      \item The platform asks the Map Service instructions for drawing the path on the map following the streets
     \end{enumerate}
     \\ \hline
     Exit Condition &  The platform displays the trip completed page.\\ \hline
@@ -890,7 +890,7 @@ distance traveled.\\
         {[D1]} & The user’s device is equipped with a GPS, an accelerometer and a gyroscope. \\
         {[D2]} & The user has a working internet connection. \\
         {[D5]} & The external weather information service is reliable. \\
-        {[D6]} & The external press() is available and provides accurate topographical data.\\
+        {[D6]} & The external Map Service is available and provides accurate topographical data.\\
         & \\
         \hline
         & \\[-1em]
@@ -970,7 +970,7 @@ distance traveled. \\
         {[D2]} & The user has a working internet connection. \\
         {[D3]} & The user provides truthful information regarding the path to be published. \\
         {[D4]} & The user provides truthful reports regarding paths. \\
-        {[D6]} & The external press() is available and provides accurate topographical data.\\
+        {[D6]} & The external Map Service is available and provides accurate topographical data.\\
         & \\
         \hline
         & \\[-1em]
@@ -1014,7 +1014,7 @@ distance traveled. \\
         
         {[D1]} &  The user’s device is equipped with a GPS, an accelerometer and a gyroscope. \\
         {[D2]} & The user has a working internet connection. \\
-        {[D6]} & The external press() is available and provides accurate topographical data.\\
+        {[D6]} & The external Map Service is available and provides accurate topographical data.\\
         & \\
         \hline
         & \\[-1em]
@@ -1055,7 +1055,7 @@ distance traveled. \\
         {[D2]} & The user has a working internet connection. \\
         {[D3]} & The user provides truthful information regarding the path to be published. \\
         {[D4]} & The user provides truthful reports regarding paths. \\
-        {[D6]} & The external press() is available and provides accurate topographical data.\\
+        {[D6]} & The external Map Service is available and provides accurate topographical data.\\
         & \\
         \hline
         & \\[-1em]
